@@ -124,7 +124,7 @@ Link: <a href='https://github.com/Omegapy/MyButtonClasses/wiki/Image-How-To-Butt
 -----------------------------------------------------------------------------------------------------------------------------
 
 Links  :  
-Project GitHub: https://github.com/Omegapy/MyGui-Buttons-Menu 
+Project GitHub: https://github.com/Omegapy/MyGUI
 GitHub: https://github.com/Omegapy   
 
 -----------------------------------------------------------------------------------------------------------------------------
