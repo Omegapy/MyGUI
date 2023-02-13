@@ -340,6 +340,8 @@ void MenuR::buildMenu()
     
 }
 
+//--------------------------------------------------------------------------------------------------------- Shadow
+
 //--------------------------------------------------------------------- Method setShadow()
 /*----------------------------------------------------------
 
@@ -361,6 +363,8 @@ void MenuR::setShadowColor(Color shadowColor)
 {
     for (ButtonR &bar : bars) bar.shadowColor = shadowColor;
 }
+
+//--------------------------------------------------------------------------------------------------------- Border
 
 //--------------------------------------------------------------------- Method setBorder()
 /*----------------------------------------------------------
@@ -415,6 +419,59 @@ void MenuR::setBorderColorHover(Color borderHover)
 void MenuR::setBorderThickness(float borderThickness)
 {
     for (ButtonR &bar : bars) bar.borderThickness = borderThickness;
+}
+
+
+//--------------------------------------------------------------------------------------------------------- Button rect.
+
+// --------------------------------------------------------------------- Method setBtnColorIdle()
+/*----------------------------------------------------------
+
+    Sets button color idle
+
+ -----------------------------------------------------------*/
+void MenuR::setBtnColorIdle(Color borderIdle)
+{
+    for (ButtonR &bar : bars) bar.btnIdle = borderIdle;
+}
+
+// --------------------------------------------------------------------- Method setBtnColorPressed()
+/*----------------------------------------------------------
+
+    Sets button color pressed
+
+ -----------------------------------------------------------*/
+void MenuR::setBtnColorPressed(Color btnPressed)
+{
+    for (ButtonR &bar : bars) bar.btnPressed = btnPressed;
+}
+
+// --------------------------------------------------------------------- Method setBtnColorHover()
+/*----------------------------------------------------------
+
+    Sets button color hover
+
+ -----------------------------------------------------------*/
+void MenuR::setBtnColorHover(Color borderHover)
+{
+    for (ButtonR &bar : bars) bar.btnHover = borderHover;
+}
+
+
+// --------------------------------------------------------------------- Method setMenuPosition()
+/*----------------------------------------------------------
+    
+    Sets menu possition
+
+    menu position:
+    CENTER, CENTER_TOP, CENTER_BOTTOM,
+    LEFT, LEFT_TOP, LEFT_BOTTOM,
+    RIGHT, RIGHT_TOP, RIGHT_BOTTOM
+
+ -----------------------------------------------------------*/
+void MenuR::setMenuPosition(unsigned menuPos)
+{
+    this->menuPos = menuPos;
 }
 
 //----------------------------------------------------------------------------------

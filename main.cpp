@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*-------------------------------*****************************************----------------------------------
  |                                *                                      *                                 |
- |                                *		      My Button Classes          *                                 |
+ |                                *		      My Gui-Button-Menu         *                                 |
  |                                *                                      *                                 |
  ---------------------------------****************************************----------------------------------*/
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -11,13 +11,13 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 Alejandro (Alex) Ricciardi
-created date: 01/03/ 2023
+created date: 02/8/2023
 
 
-                                            My button classes
+                                            My Gui-Button-Menu 
 
 
-This project is my button classes in c++ with the raylib library.
+This project is my My Gui-Button-Menu in c++ with the raylib library.
 
 Requirement
 c and c++ 20 or later
@@ -108,6 +108,33 @@ Raylib library: https://www.raylib.com
     The default font is raylib font.
 
     ------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------
+
+    -- MenuR --
+
+    The MenuR class creates static-size menu objects,
+    window-resized-not-responsive menus.
+
+    The menu object can contain one menu bar or several menu bars,
+    the menu can be automatically positioned on the left, center, or right side of the screen.
+    See mutators to modify the menu position.
+
+    The bars’ sizes are computed from the font size and length of the bar text longest;
+    the texts can be positioned on the left, center, or right side of the bars.
+    See mutators to modify each individual bar position, the text’s position in each individual bar,
+    and the each individual bar’s size.
+
+    The bars’ borders can be turned on and off.
+    The sizes of the borders are computed from the font size and length of the bar text longest bar;
+    modifying the bars’ sizes will also modify the borders’ sizes.
+
+    The button's shadows can be turned on and off.
+    The sizes of the shadows are computed from the font size and length of the nar text longest;
+    modifying the bars’ sizes will also modify the shadows’ sizes.
+
+    The default font is raylib font.
+
+    The menuR bars utilized the ButtonR class
 
  */
 
@@ -254,13 +281,20 @@ int main()
     //MenuR menu3({ "START", "RESUME", "NEXT", "ABOUT", "EXIT" }, CENTER, TXT_RIGHT);
     //MenuR menu4({ "START", "RESUME", "NEXT", "ABOUT", "EXIT" }, CENTER, font2, 32);
     MenuR menu5({ "START", "RESUME", "NEXT", "ABOUT", "EXIT" }, CENTER, TXT_CENTER, font1, 32);
+    // Shadow
     menu5.setShadow(false);
     menu5.setShadowColor(GREEN);
     menu5.setBorderColorIdle(BLUE);
+    // Border
     menu5.setBorderThickness(5);
     menu5.setBorderColorPressed(YELLOW);
     menu5.setBorderColorHover(WHITE);
     menu5.setBorder(false);
+    // Button rect.
+    menu5.setBtnColorIdle(BLUE);
+    menu5.setBtnColorPressed(YELLOW);
+    menu5.setBtnColorHover(WHITE);
+
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
