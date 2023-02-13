@@ -294,6 +294,12 @@ int main()
     menu5.setBtnColorIdle(BLUE);
     menu5.setBtnColorPressed(YELLOW);
     menu5.setBtnColorHover(WHITE);
+    menu5.setFontSize(58);
+    menu5.setFontSizeNoResize(24);
+    menu5.setTextBar("----------------------Mod.Text Bar------------------", 3);
+    menu5.setTextBar("Mod.Text Bar", 3);
+    menu5.setTxtPosition(TXT_LEFT);
+
 
 
     // Main game loop

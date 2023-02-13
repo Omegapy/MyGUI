@@ -81,6 +81,7 @@ public:
           menuHeight = 0.0f,
           menuX = 0.0f,
           menuY = 0.0f;
+
     // Menu position
     unsigned menuPos = LEFT;
 
@@ -99,7 +100,7 @@ public:
     Font font;
     float fontSize = 0.0f;
     bool isRayFont = true;
-    
+    bool isTxtMod = false;
 
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
@@ -188,7 +189,7 @@ public:
         LEFT, LEFT_TOP, LEFT_BOTTOM,
         RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
-         texts position:
+        texts position:
         TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
      ----------------------------------------------------*/
@@ -301,9 +302,49 @@ public:
      -----------------------------------------------------------*/
     void setBtnColorHover(Color btnHover);
 
+    //---------------------------------------------------------------------------------- Text
+
+    /*----------------------------------------------------
+
+         Sets font size and
+         Resizes menu bars to fit text
+
+     -----------------------------------------------------*/
+    void setFontSize(float fontSize);
+
+    /*----------------------------------------------------
+
+         Sets font size and
+         does NOT resizes bars to fit text
+
+     -----------------------------------------------------*/
+    void setFontSizeNoResize(float fontSize);
+
+    /*----------------------------------------------------
+
+         Sets text to a bar and
+         if need it,
+         resizes the bar and the menu lenght to fit text
+         but not the heights.
+
+         the bars indexes start at 0
+
+     -----------------------------------------------------*/
+    void setTextBar(string text, unsigned barIndex);
+
     /*----------------------------------------------------------
 
-        Sets menu possition
+        Sets texts possition
+
+        texts position:
+        TXT_CENTER, TXT_LEFT, TXT_RIGHT
+
+     -----------------------------------------------------------*/
+    void MenuR::setTxtPosition(unsigned textsPos);
+
+    /*----------------------------------------------------------
+
+        Sets menu position
 
         menu position:
         CENTER, CENTER_TOP, CENTER_BOTTOM,
@@ -312,6 +353,8 @@ public:
 
      -----------------------------------------------------------*/
     void setMenuPosition(unsigned menuPos);
+
+
 
 private:
 

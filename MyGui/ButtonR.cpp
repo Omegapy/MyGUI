@@ -389,7 +389,6 @@ void ButtonR::buildBtn()
 
      Sets font size and
      Resizes button to fit text
-     Takes a string
 
  -----------------------------------------------------*/
 void ButtonR::setFontSize(float fontSize)
@@ -404,7 +403,6 @@ void ButtonR::setFontSize(float fontSize)
 
      Sets font size and
      does NOT resizes button to fit text
-     Takes a string
 
  -----------------------------------------------------*/
 void ButtonR::setFontSizeNoResize(float fontSize)

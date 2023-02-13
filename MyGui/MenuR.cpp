@@ -175,7 +175,7 @@ MenuR::MenuR(vector<string> texts, unsigned menuPos, Font &font, float fontSize)
     LEFT, LEFT_TOP, LEFT_BOTTOM,
     RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
-     texts position:
+    texts position:
     TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
  ----------------------------------------------------*/
@@ -226,21 +226,25 @@ void MenuR::draw()
 void MenuR::buildMenu()
 {
     //---- Builds Bar
-    numBars =(unsigned)texts.size(); // the number of bars is computed from the size of the vector texts
+    numBars = (unsigned)texts.size(); // the number of bars is computed from the size of the vector texts
     //-- Bars' texts
-    if (isRayFont) // Default font
+    if (!isTxtMod)
     {
-        ButtonR bar; // empty bar, Default ButtonR
-        for (unsigned i = 0; i < numBars; i++) bars.push_back(bar); 
-        for (unsigned i = 0; i < numBars; i++) bars[i].setText(texts[i]); 
+        // Init. bars vectoct
+        bars.clear();
+        if (isRayFont) // Default font
+        {
+            ButtonR bar; // empty bar, Default ButtonR
+            for (unsigned i = 0; i < numBars; i++) bars.push_back(bar);
+            for (unsigned i = 0; i < numBars; i++) bars[i].setText(texts[i]);
+        }
+        else // Loaded font
+        {
+            ButtonR bar("Empty", font, fontSize);
+            for (unsigned i = 0; i < numBars; i++) bars.push_back(bar);
+            for (unsigned i = 0; i < numBars; i++) bars[i].setText(texts[i]);
+        }
     }
-    else // Loaded font
-    {
-        ButtonR bar("Empty", font, fontSize);
-        for (unsigned i = 0; i < numBars; i++) bars.push_back(bar);
-        for (unsigned i = 0; i < numBars; i++) bars[i].setText(texts[i]);
-    }
-    
     // Computes the bars width and menu width
     // The bars’ sizes are computed from the font size and length of the longest text
     float barsWidth = 0;
@@ -457,11 +461,80 @@ void MenuR::setBtnColorHover(Color borderHover)
     for (ButtonR &bar : bars) bar.btnHover = borderHover;
 }
 
+//--------------------------------------------------------------------------------------------------------- Text
+
+//--------------------------------------------------------------------- Method setFontSize()
+/*----------------------------------------------------
+
+     Sets font size and
+     Resizes menu bars to fit text
+
+ -----------------------------------------------------*/
+void MenuR::setFontSize(float fontSize)
+{
+    this->fontSize = fontSize;
+    for (ButtonR &bar : bars) bar.setFontSize(fontSize);
+    isTxtMod = true;
+    buildMenu();
+}
+
+//--------------------------------------------------------------------- Method setFontSizeNoResize()
+/*----------------------------------------------------
+
+     Sets font size and
+     does NOT resizes bars to fit text
+
+ -----------------------------------------------------*/
+void MenuR::setFontSizeNoResize(float fontSize)
+{
+    this->fontSize = fontSize;
+    for (ButtonR &bar : bars) bar.setFontSizeNoResize(fontSize);
+    isTxtMod = true;
+    buildMenu();
+}
+
+//--------------------------------------------------------------------- Method setTextBar()
+/*----------------------------------------------------
+
+     Sets text to a bar and
+     if need it,
+     resizes the bar and the menu lenght to fit text
+     but not the heights.
+
+     the bars indexes start at 0
+
+ -----------------------------------------------------*/
+void MenuR::setTextBar(string text, unsigned barIndex)
+{
+    float barHeight = bars[barIndex].rect.height;
+    bars[barIndex].setText(text);
+    bars[barIndex].rect.height = barHeight;
+    texts[barIndex] = text;
+    isTxtMod = true;
+    buildMenu();
+}
+
+
+// --------------------------------------------------------------------- Method setTextPosition()
+/*----------------------------------------------------------
+
+    Sets texts position
+
+    texts position:
+    TXT_CENTER, TXT_LEFT, TXT_RIGHT
+
+ -----------------------------------------------------------*/
+void MenuR::setTxtPosition(unsigned textsPos)
+{
+    this->textsPos = textsPos;
+    isTxtMod = true;
+    buildMenu();
+}
 
 // --------------------------------------------------------------------- Method setMenuPosition()
 /*----------------------------------------------------------
     
-    Sets menu possition
+    Sets menu position
 
     menu position:
     CENTER, CENTER_TOP, CENTER_BOTTOM,
