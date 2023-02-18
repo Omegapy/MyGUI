@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 
-   The ButtonO class creates a rounded edges rectangle shaped static-size button, 
+    The ButtonO class creates a rounded edges rectangle shaped static-size button, 
     window-resized-not-responsive button.
 
     The button size is computed from the font size and length of the text;

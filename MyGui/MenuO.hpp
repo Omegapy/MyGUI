@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*--------------------------------****************************************----------------------------------
 |                                *                                      *                                 |
-|  Program Buttons               *        MenuR Class Declarations      *                                 |
+|  Program MyGui                 *       MenuO Class Declaration        *                                 |
 |                                *                                      *                                 |
 ---------------------------------****************************************----------------------------------*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -9,10 +9,10 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-
-    The MenuR class creates static-size menu objects,
+* 
+    The MenuO class creates static-size menu objects,
     window-resized-not-responsive menus.
-    The MenuR objects consist of rectangle shaped bars.
+    The MenuR objects consist of rounded edges rectangle shaped bars.
 
     The menu object can contain one menu bar or several menu bars,
     the menu can be automatically positioned on the left, center, or right side of the screen.
@@ -31,32 +31,31 @@
 
     The default font is raylib font.
 
-    The menu bars are untilizing the ButtonR class
+    The menu bars are untilizing the ButtonO class
 
     Requirement
     c and c++ 20 or later
     Raylib library: https://www.raylib.com
-    ButtonR Class
+    ButtonO Class
 
 */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef MENU_R_HPP
-#define MENU_R_HPP
+#ifndef MENU_O_HPP
+#define MENU_O_HPP
 
 #ifdef _MSC_VER
 #pragma once
 #endif  // _MSC_VER
 
-#include "ButtonR.hpp"
+#include "ButtonO.hpp"
 #include "enums.hpp"
 
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//--------------------------------------------- Class MenuR ---------------------------------------------------
+//--------------------------------------------- Class MenuO ---------------------------------------------------
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class MenuR 
+class MenuO
 {
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
@@ -72,23 +71,23 @@ public:
 
     // variables (Public)
     //----------------------------------------------------------------------------------
-    
+
     //---- Menu
     float menuWidth = 0.0f,
-          menuHeight = 0.0f,
-          menuX = 0.0f,
-          menuY = 0.0f;
+        menuHeight = 0.0f,
+        menuX = 0.0f,
+        menuY = 0.0f;
 
     // Menu position
     unsigned menuPos = LEFT;
 
     //---- Menu bars
     unsigned numBars = 0;
-    vector<ButtonR> bars;
+    vector<ButtonO> bars;
     float barSpacing = 50.0f,
-          barsHeight = 0.0f,
-          barsWidth = 0.0f;
-    
+        barsHeight = 0.0f,
+        barsWidth = 0.0f;
+
     //---- Menu texts
     vector<string> texts;
     // Texts postion in bars
@@ -99,6 +98,10 @@ public:
     bool isRayFont = true;
     bool isTxtMod = false;
 
+    // Bar rectangle rounded edges outline
+    float roundness = 1.0f;
+
+
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
 
@@ -108,11 +111,11 @@ public:
 
     /*---------------------------------------------------
 
-        Default construtor 
+        Default construtor
         - raylib default font
 
      ----------------------------------------------------*/
-    MenuR();
+    MenuO();
 
     /*---------------------------------------------------
 
@@ -121,7 +124,7 @@ public:
         texts
 
      ----------------------------------------------------*/
-    MenuR(vector<string> texts);
+    MenuO(vector<string> texts);
 
     /*------------------------------------------------------------
 
@@ -129,12 +132,12 @@ public:
         - raylib default font
         texts, menu position
 
-        CENTER, CENTER_TOP, CENTER_BOTTOM, 
-        LEFT, LEFT_TOP, LEFT_BOTTOM, 
+        CENTER, CENTER_TOP, CENTER_BOTTOM,
+        LEFT, LEFT_TOP, LEFT_BOTTOM,
         RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
      -------------------------------------------------------------*/
-    MenuR(vector<string> texts, unsigned menuPos);
+    MenuO(vector<string> texts, unsigned menuPos);
 
     /*---------------------------------------------------
 
@@ -151,7 +154,7 @@ public:
         TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
      ----------------------------------------------------*/
-    MenuR(vector<string> texts, unsigned menuPos, unsigned textsPos);
+    MenuO(vector<string> texts, unsigned menuPos, unsigned textsPos);
 
     /*---------------------------------------------------
 
@@ -159,7 +162,7 @@ public:
         texts, font
 
      ----------------------------------------------------*/
-    MenuR(vector<string> texts, Font &font, float fontSize);
+    MenuO(vector<string> texts, Font &font, float fontSize);
 
     /*---------------------------------------------------
 
@@ -173,7 +176,7 @@ public:
         RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
      ----------------------------------------------------*/
-    MenuR(vector<string> texts, unsigned menuPos, Font &font, float fontSize);
+    MenuO(vector<string> texts, unsigned menuPos, Font &font, float fontSize);
 
     /*---------------------------------------------------
 
@@ -190,36 +193,36 @@ public:
         TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
      ----------------------------------------------------*/
-    MenuR(vector<string> texts, unsigned menuPos, unsigned textsPos, Font &font, float fontSize);
+    MenuO(vector<string> texts, unsigned menuPos, unsigned textsPos, Font &font, float fontSize);
+
+   
+   //----------------------------------------------------------------------------------
+   //----------------------------------------------------------------------------------
+
+   // Accessors Methods
+   //----------------------------------------------------------------------------------
+
+   /*----------------------------------------------------
+
+       draw bars
+
+    -----------------------------------------------------*/
+    void draw();
+
 
     //----------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------
+   //----------------------------------------------------------------------------------
 
-    // Accessors Methods
-    //----------------------------------------------------------------------------------
-
-    /*----------------------------------------------------
-
-        draw bars
-        Not inherited by child classes
-
-     -----------------------------------------------------*/
-    void virtual draw();
+   // Mutators Methods
+   //---------------------------------------------------------------------------------
 
 
-    //----------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------
+   /*----------------------------------------------------------
 
-    // Mutators Methods
-    //---------------------------------------------------------------------------------
+       Builds the Menu,
+       computes size from the font size and length of the texts
 
-
-    /*----------------------------------------------------------
-
-        Builds the Menu,
-        computes size from the font size and length of the texts
-
-     -----------------------------------------------------------*/
+    -----------------------------------------------------------*/
     void buildMenu();
 
     //---------------------------------------------------------------------------------- Menu bars
@@ -264,6 +267,13 @@ public:
 
      -----------------------------------------------------*/
     void setBarsSize(float barWidth, float barHeight);
+
+    /*----------------------------------------------------------
+
+        Sets shadow color
+
+     -----------------------------------------------------------*/
+    void setbBarsRoundness(float roundness);
 
     //---------------------------------------------------------------------------------- Shadow
 
@@ -360,6 +370,7 @@ public:
      -----------------------------------------------------------*/
     void setTxtPosition(unsigned textsPos);
 
+
 private:
 
     //----------------------------------------------------------------------------------
@@ -367,6 +378,7 @@ private:
 
     // Classe Operation Functions (private)
     //---------------------------------------------------------------------------------
+
 
 };
 
