@@ -26,7 +26,7 @@
 
     The default font is raylib font.
       
-    Parent class to the ButtonO class
+    The menu bars untilize the ButtonR class
 
     Requirement
     c and c++ 20 or later

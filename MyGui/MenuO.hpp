@@ -31,7 +31,7 @@
 
     The default font is raylib font.
 
-    The menu bars are untilizing the ButtonO class
+    The menu bars untilize the ButtonO class
 
     Requirement
     c and c++ 20 or later
@@ -124,7 +124,7 @@ public:
         texts
 
      ----------------------------------------------------*/
-    MenuO(vector<string> texts);
+    MenuO(vector<string> &texts);
 
     /*------------------------------------------------------------
 
@@ -137,7 +137,7 @@ public:
         RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
      -------------------------------------------------------------*/
-    MenuO(vector<string> texts, unsigned menuPos);
+    MenuO(vector<string> &texts, unsigned menuPos);
 
     /*---------------------------------------------------
 
@@ -154,7 +154,7 @@ public:
         TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
      ----------------------------------------------------*/
-    MenuO(vector<string> texts, unsigned menuPos, unsigned textsPos);
+    MenuO(vector<string> &texts, unsigned menuPos, unsigned textsPos);
 
     /*---------------------------------------------------
 
@@ -162,7 +162,7 @@ public:
         texts, font
 
      ----------------------------------------------------*/
-    MenuO(vector<string> texts, Font &font, float fontSize);
+    MenuO(vector<string> &texts, Font &font, float fontSize);
 
     /*---------------------------------------------------
 
@@ -176,7 +176,7 @@ public:
         RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
      ----------------------------------------------------*/
-    MenuO(vector<string> texts, unsigned menuPos, Font &font, float fontSize);
+    MenuO(vector<string> &texts, unsigned menuPos, Font &font, float fontSize);
 
     /*---------------------------------------------------
 
@@ -193,7 +193,7 @@ public:
         TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
      ----------------------------------------------------*/
-    MenuO(vector<string> texts, unsigned menuPos, unsigned textsPos, Font &font, float fontSize);
+    MenuO(vector<string> &texts, unsigned menuPos, unsigned textsPos, Font &font, float fontSize);
 
    
    //----------------------------------------------------------------------------------
@@ -244,21 +244,21 @@ public:
         Sets bars color
 
      -----------------------------------------------------------*/
-    void setBarsColorIdle(Color btnIdle);
+    void setBarsColorIdle(Color barIdle);
 
     /*----------------------------------------------------------
 
         Sets bars color pressed
 
      -----------------------------------------------------------*/
-    void setBarsColorPressed(Color btnPressed);
+    void setBarsColorPressed(Color barPressed);
 
     /*----------------------------------------------------------
 
-        Sets button color hover
+        Sets bars color hover
 
      -----------------------------------------------------------*/
-    void setBarsColorHover(Color btnHover);
+    void setBarsColorHover(Color barHover);
 
     /*----------------------------------------------------
 
@@ -270,7 +270,7 @@ public:
 
     /*----------------------------------------------------------
 
-        Sets shadow color
+        Sets roundness color
 
      -----------------------------------------------------------*/
     void setbBarsRoundness(float roundness);

@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*--------------------------------****************************************----------------------------------
 |                                *                                      *                                 |
-|  Program Buttons               *        MenuR Class Declarations      *                                 |
+|  Program MyGui                 *       MenuP Class Declaration        *                                 |
 |                                *                                      *                                 |
 ---------------------------------****************************************----------------------------------*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -9,10 +9,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-
-    The MenuR class creates static-size menu objects,
-    window-resized-not-responsive menus.
-    The MenuR objects consist of rectangle shaped bars.
+*
+    The MenuP class creates responsive menu objects, from an image.
+    (The button resizes with the window).
 
     The menu object can contain one menu bar or several menu bars,
     the menu can be automatically positioned on the left, center, or right side of the screen.
@@ -21,42 +20,33 @@
     The bars’ sizes are computed from the font size and length of the bar with the longest text;
     the texts can be positioned on the left, center, or right side of the bars.
 
-    The bars’ borders can be turned on and off.
-    The sizes of the borders are computed from the font size and length of the bar with the longest text;
-    modifying the bars’ sizes will also modify the borders’ sizes.
-
-    The button's shadows can be turned on and off.
-    The sizes of the shadows are computed from the font size and length of the bar with the longest text;
-    modifying the bars’ sizes will also modify the shadows’ sizes.
-
     The default font is raylib font.
 
-    The menu bars untilize the ButtonR class
+    The menu bars untilize the ButtonP class
 
     Requirement
     c and c++ 20 or later
     Raylib library: https://www.raylib.com
-    ButtonR Class
+    ButtonO Class
 
 */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef MENU_R_HPP
-#define MENU_R_HPP
+#ifndef MENU_P_HPP
+#define MENU_P_HPP
 
 #ifdef _MSC_VER
 #pragma once
 #endif  // _MSC_VER
 
-#include "ButtonR.hpp"
+#include "ButtonP.hpp"
 #include "enums.hpp"
 
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//--------------------------------------------- Class MenuR ---------------------------------------------------
+// --------------------------------------------- Class MenuP ---------------------------------------------------
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class MenuR 
+class MenuP
 {
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
@@ -72,7 +62,7 @@ public:
 
     // variables (Public)
     //----------------------------------------------------------------------------------
-    
+
     //---- Menu
     float menuWidth = 0.0f,
           menuHeight = 0.0f,
@@ -84,20 +74,24 @@ public:
 
     //---- Menu bars
     unsigned numBars = 0;
-    vector<ButtonR> bars;
+    vector<ButtonP> bars;
     float barSpacing = 50.0f,
           barsHeight = 0.0f,
           barsWidth = 0.0f;
-    
+    // Images paths
+    vector<string> imgPaths;
+
     //---- Menu texts
     vector<string> texts;
     // Texts postion in bars
     unsigned textsPos = TXT_LEFT;
+    float txtMargine = 13; // text margine left and right 
     // font
     Font font;
     float fontSize = 0.0f;
     bool isRayFont = true;
     bool isTxtMod = false;
+
 
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
@@ -108,39 +102,39 @@ public:
 
     /*---------------------------------------------------
 
-        Default construtor 
+        Default construtor
         - raylib default font
 
      ----------------------------------------------------*/
-    MenuR();
+    MenuP();
 
     /*---------------------------------------------------
 
         Constructor-1
         - raylib default font
-        texts
+        texts. image paths
 
      ----------------------------------------------------*/
-    MenuR(vector<string> &texts);
+    MenuP(vector<string> &texts, vector<string> &imgPaths);
 
     /*------------------------------------------------------------
 
         Constructor-2
         - raylib default font
-        texts, menu position
+        texts, menu position, image paths
 
-        CENTER, CENTER_TOP, CENTER_BOTTOM, 
-        LEFT, LEFT_TOP, LEFT_BOTTOM, 
+        CENTER, CENTER_TOP, CENTER_BOTTOM,
+        LEFT, LEFT_TOP, LEFT_BOTTOM,
         RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
      -------------------------------------------------------------*/
-    MenuR(vector<string> &texts, unsigned menuPos);
+    MenuP(vector<string> &texts, unsigned menuPos, vector<string> &imgPaths);
 
     /*---------------------------------------------------
 
         Constructor-3
         - raylib default font
-        texts, menu position, texts position
+        texts, menu position, texts position, image paths
 
         menu position:
         CENTER, CENTER_TOP, CENTER_BOTTOM,
@@ -151,21 +145,21 @@ public:
         TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
      ----------------------------------------------------*/
-    MenuR(vector<string> &texts, unsigned menuPos, unsigned textsPos);
+    MenuP(vector<string> &texts, unsigned menuPos, unsigned textsPos, vector<string> &imgPaths);
 
     /*---------------------------------------------------
 
         Constructor-4
-        texts, font
+        texts, font, image paths
 
      ----------------------------------------------------*/
-    MenuR(vector<string> &texts, Font &font, float fontSize);
+    MenuP(vector<string> &texts, Font &font, float fontSize, vector<string> &imgPaths);
 
     /*---------------------------------------------------
 
         Constructor-5
         - raylib default font
-        texts, menu position, font size
+        texts, menu position, font size, image paths
 
         menu position:
         CENTER, CENTER_TOP, CENTER_BOTTOM,
@@ -173,13 +167,13 @@ public:
         RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
      ----------------------------------------------------*/
-    MenuR(vector<string> &texts, unsigned menuPos, Font &font, float fontSize);
+    MenuP(vector<string> &texts, unsigned menuPos, Font &font, float fontSize, vector<string> &imgPaths);
 
     /*---------------------------------------------------
 
         constructor-6
         - raylib default font
-        texts, menu position, font size
+        texts, menu position, font size, image paths
 
         menu position:
         CENTER, CENTER_TOP, CENTER_BOTTOM,
@@ -190,7 +184,16 @@ public:
         TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
      ----------------------------------------------------*/
-    MenuR(vector<string> &texts, unsigned menuPos, unsigned textsPos, Font &font, float fontSize);
+    MenuP(vector<string> &texts, unsigned menuPos, unsigned textsPos, Font &font, float fontSize, vector<string> &imgPaths);
+
+
+    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
+
+    // Destructor
+    //---------------------------------------------------------------------------------
+    ~MenuP();
+
 
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
@@ -201,25 +204,24 @@ public:
     /*----------------------------------------------------
 
         draw bars
-        Not inherited by child classes
 
      -----------------------------------------------------*/
-    void virtual draw();
+    void draw();
 
 
     //----------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------
+   //----------------------------------------------------------------------------------
 
-    // Mutators Methods
-    //---------------------------------------------------------------------------------
+   // Mutators Methods
+   //---------------------------------------------------------------------------------
 
 
-    /*----------------------------------------------------------
+   /*----------------------------------------------------------
 
-        Builds the Menu,
-        computes size from the font size and length of the texts
+       Builds the Menu,
+       computes size from the font size and length of the texts
 
-     -----------------------------------------------------------*/
+    -----------------------------------------------------------*/
     void buildMenu();
 
     //---------------------------------------------------------------------------------- Menu bars
@@ -238,13 +240,6 @@ public:
 
     /*----------------------------------------------------------
 
-        Sets bars color
-
-     -----------------------------------------------------------*/
-    void setBarsColorIdle(Color barIdle);
-
-    /*----------------------------------------------------------
-
         Sets bars color pressed
 
      -----------------------------------------------------------*/
@@ -255,7 +250,7 @@ public:
         Sets bars color hover
 
      -----------------------------------------------------------*/
-    void setBarsColorHover(Color barHover);
+    void setBarsColorHover(Color barsHover);
 
     /*----------------------------------------------------
 
@@ -265,59 +260,12 @@ public:
      -----------------------------------------------------*/
     void setBarsSize(float barWidth, float barHeight);
 
-    //---------------------------------------------------------------------------------- Shadow
-
-    /*----------------------------------------------------------
-
-        Sets shadow true or false
-
-     -----------------------------------------------------------*/
-    void setShadow(bool isShadow);
-
     /*----------------------------------------------------------
 
         Sets shadow color
 
      -----------------------------------------------------------*/
-    void setShadowsColor(Color shadowColor);
-
-
-    //---------------------------------------------------------------------------------- Border
-
-    /*----------------------------------------------------------
-
-       Sets border true or false
-
-    -----------------------------------------------------------*/
-    void setBorder(bool isBorder);
-
-    /*----------------------------------------------------------
-
-        Sets border color
-
-     -----------------------------------------------------------*/
-    void setBordersColorIdle(Color borderIdle);
-
-    /*----------------------------------------------------------
-
-        Sets border color pressed
-
-     -----------------------------------------------------------*/
-    void setBordersColorPressed(Color borderPressed);
-
-    /*----------------------------------------------------------
-
-        Sets border color hover
-
-     -----------------------------------------------------------*/
-    void setBordersColorHover(Color borderHover);
-
-    /*----------------------------------------------------------
-
-        Sets border thickness
-
-     -----------------------------------------------------------*/
-    void setBordersThickness(float borderThickness);
+    void setbBarsRoundness(float roundness);
 
 
     //---------------------------------------------------------------------------------- Text
@@ -360,6 +308,7 @@ public:
      -----------------------------------------------------------*/
     void setTxtPosition(unsigned textsPos);
 
+
 private:
 
     //----------------------------------------------------------------------------------
@@ -367,6 +316,7 @@ private:
 
     // Classe Operation Functions (private)
     //---------------------------------------------------------------------------------
+
 
 };
 

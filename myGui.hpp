@@ -27,6 +27,8 @@
 #include "myGui/ButtonP.hpp"
 
 #include "myGui/MenuR.hpp"
+#include "myGui/MenuO.hpp"
+#include "myGui/MenuP.hpp"
 
 using namespace std;
 

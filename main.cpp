@@ -112,29 +112,53 @@ Raylib library: https://www.raylib.com
 
     -- MenuR --
 
-    The MenuR class creates static-size menu objects,
+    The ButtonR class creates a rectangle-shaped static-size button, window-resized-not-responsive button.
+
+    The button size is computed from the font size and length of the text;
+    the text is automatically centered on the button.
+    See mutators to modify the button’s position, the text’s position in the button, and the button’s size.
+
+    The button's border can be turned on and off.
+    the border's size is computed from the font size and length of the text;
+    modifying the button's size will also modify the border's size.
+
+    The button's shadow can be turned on and off.
+    The shadow size is computed from the font size and length of the text;
+    modifying the button's size will also modify the shadow's size.
+
+    The default font is raylib font.
+
+    The menu bars untilize the ButtonR class
+
+    ------------------------------------------------------------------------------------------------------------
+
+    --- MenuO ---
+
+    The MenuO class creates static-size menu objects,
     window-resized-not-responsive menus.
+    The MenuR objects consist of rounded edges rectangle shaped bars.
 
     The menu object can contain one menu bar or several menu bars,
     the menu can be automatically positioned on the left, center, or right side of the screen.
     See mutators to modify the menu position.
 
-    The bars’ sizes are computed from the font size and length of the bar text longest;
+    The bars’ sizes are computed from the font size and length of the bar with the longest text;
     the texts can be positioned on the left, center, or right side of the bars.
-    See mutators to modify each individual bar position, the text’s position in each individual bar,
-    and the each individual bar’s size.
 
     The bars’ borders can be turned on and off.
-    The sizes of the borders are computed from the font size and length of the bar text longest bar;
+    The sizes of the borders are computed from the font size and length of the bar with the longest text;
     modifying the bars’ sizes will also modify the borders’ sizes.
 
     The button's shadows can be turned on and off.
-    The sizes of the shadows are computed from the font size and length of the nar text longest;
+    The sizes of the shadows are computed from the font size and length of the bar with the longest text;
     modifying the bars’ sizes will also modify the shadows’ sizes.
 
     The default font is raylib font.
 
-    The menuR bars utilized the ButtonR class
+    The menu bars untilize the ButtonO class
+
+    ------------------------------------------------------------------------------------------------------------
+
 
  */
 
@@ -214,21 +238,6 @@ int main()
     Font font1 = LoadFont("resources/fonts/monofonto.otf");
     Font font2 = LoadFont("resources/fonts/segoeui.ttf");
 
-                                     
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //---------------------------------------------- comment type-1 -------------------------------------------------
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-    //----------------------------------------------------------------------------------------------------------------
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //---------------------------------------------------------------------------------------------------------------
-    //                                               comment type-2 
-    //--------------------------------------------------------------------------------------------------------------- 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //---------------------------------------------- comment type-2 -------------------------------------------------
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
     //------ Rectangle buttons
@@ -275,31 +284,64 @@ int main()
     //ButtonP btn9("Button", 750, 325, "resources/images/button1.png", font2);
 
 
-    //MenuR menuDefault;
-    //MenuR menu1({ "START", "RESUME", "NEXT", "ABOUT", "EXIT" });
-    //MenuR menu2({ "START", "RESUME", "NEXT", "ABOUT", "EXIT" }, CENTER);
-    //MenuR menu3({ "START", "RESUME", "NEXT", "ABOUT", "EXIT" }, CENTER, TXT_RIGHT);
-    //MenuR menu4({ "START", "RESUME", "NEXT", "ABOUT", "EXIT" }, CENTER, font2, 32);
-    MenuR menu5({ "START", "RESUME", "NEXT", "ABOUT", "EXIT" }, CENTER, TXT_CENTER, font1, 32);
-    // Shadow
-    menu5.setShadow(false);
-    menu5.setShadowColor(GREEN);
-    menu5.setBorderColorIdle(BLUE);
-    // Border
-    menu5.setBorderThickness(5);
-    menu5.setBorderColorPressed(YELLOW);
-    menu5.setBorderColorHover(WHITE);
-    menu5.setBorder(false);
-    // Button rect.
-    menu5.setBtnColorIdle(BLUE);
-    menu5.setBtnColorPressed(YELLOW);
-    menu5.setBtnColorHover(WHITE);
-    menu5.setFontSize(58);
-    menu5.setFontSizeNoResize(24);
-    menu5.setTextBar("----------------------Mod.Text Bar------------------", 3);
-    menu5.setTextBar("Mod.Text Bar", 3);
-    menu5.setTxtPosition(TXT_LEFT);
+    vector<string> menuTxt = { "START", "RESUME", "NEXT", "ABOUT", "EXIT" };
 
+    //MenuR menuDefaultR;
+    //MenuR menuR1(menuTxt);
+    //MenuR menuR2(menuTxt, CENTER);
+    //MenuR menuR3(menuTxt, CENTER, TXT_RIGHT);
+    //MenuR menuR4(menuTxt, CENTER, font2, 32);
+    //MenuR menuR5(menuTxt, CENTER, TXT_CENTER, font1, 32);
+    // Shadow
+    //menuR5.setShadow(false);
+    //menuR5.setShadowsColor(GREEN);
+    //menuR5.setBordersColorIdle(BLUE);
+    // Border
+    //menuR5.setBordersThickness(5);
+    //menuR5.setBordersColorPressed(YELLOW);
+    //menuR5.setBordersColorHover(WHITE);
+    //menu5.setBorder(false);
+    // Button rect.
+    //menuR5.setBarsColorIdle(BLUE);
+    //menuR5.setBarsColorPressed(YELLOW);
+    //menuR5.setBarsColorHover(WHITE);
+    //menuR5.setFontSize(58);
+    //menuR5.setFontSizeNoResize(24);
+    //menuR5.setTextBar("----------------------Mod.Text Bar------------------", 3);
+    //menuR5.setTextBar("Mod.Text Bar", 3);
+    //menuR5.setTxtPosition(TXT_LEFT);
+
+
+    //MenuO menuDefaultO;
+    //MenuO menuO1(menuTxt);
+    //MenuO menuO2(menuTxt, CENTER);
+    //MenuO menuO3(menuTxt, CENTER, TXT_RIGHT);
+    //MenuO menuO4(menuTxt, CENTER, font2, 32);
+    //MenuO menuO5(menuTxt, CENTER, TXT_CENTER, font1, 32);
+    // Shadow
+    //menuO5.setShadow(false);
+    //menuO5.setShadowsColor(GREEN);
+    //menu5.setBordersColorIdle(BLUE);
+    // Border
+    //menuO5.setBordersThickness(5);
+    //menuO5.setBordersColorPressed(YELLOW);
+    //menuO5.setBordersColorHover(WHITE);
+    //menuO5.setBorder(false);
+    // Button rect.
+    //menuO5.setBarsColorIdle(BLUE);
+    //menuO5.setBarsColorPressed(YELLOW);
+    //menuO5.setBarsColorHover(WHITE);
+    //menuO5.setFontSize(58);
+    //menuO5.setFontSizeNoResize(24);
+    //menuO5.setTextBar("----------------------Mod.Text Bar------------------", 3);
+    //menuO5.setTextBar("Mod.Text Bar", 3);
+    //menuO5.setTxtPosition(TXT_LEFT);
+
+    MenuP menuDefaultP;
+    //MenuP menuP1(menuTxt);
+    //MenuP menuP2(menuTxt, CENTER);
+    //MenuP menuP3(menuTxt, CENTER, TXT_RIGHT);
+    //MenuP menuP4(menuTxt, CENTER, font2, 32);
 
 
     // Main game loop
@@ -321,12 +363,26 @@ int main()
 
             ClearBackground(BLACK);
 
-            //menuDefault.draw();
-            //menu1.draw();
-            //menu2.draw();
-            //menu3.draw();
-            //menu4.draw();
-            menu5.draw();
+            //menuDefaultR.draw();
+            //menuR1.draw();
+            //menuR2.draw();
+            //menuR3.draw();
+            //menuR4.draw();
+            //menuR5.draw();
+
+            //menuDefaultO.draw();
+            //menuO1.draw();
+            //menuO2.draw();
+            //menuO3.draw();
+            //menuO4.draw();
+            //menuO5.draw();
+
+            menuDefaultP.draw();
+            //menuP1.draw();
+            //menuP2.draw();
+            //menuP3.draw();
+            //menuP4.draw();
+            //menuP5.draw();
 
 
             /*btn1.draw();

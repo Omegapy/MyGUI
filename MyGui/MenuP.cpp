@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*--------------------------------****************************************----------------------------------
 |                                *                                      *                                 |
-|  MyGui                         *         MenuR Class Definition       *                                 |
+|  Program MyGui                 *        MenuP Class Definition        *                                 |
 |                                *                                      *                                 |
 ---------------------------------****************************************----------------------------------*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -9,10 +9,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-
-    The MenuR class creates static-size menu objects,
-    window-resized-not-responsive menus.
-    The MenuR objects consist of rectangle shaped bars.
+*
+    The MenuP class creates responsive menu objects, from an image.
+    (The button resizes with the window).
 
     The menu object can contain one menu bar or several menu bars,
     the menu can be automatically positioned on the left, center, or right side of the screen.
@@ -21,25 +20,17 @@
     The bars’ sizes are computed from the font size and length of the bar with the longest text;
     the texts can be positioned on the left, center, or right side of the bars.
 
-    The bars’ borders can be turned on and off.
-    The sizes of the borders are computed from the font size and length of the bar with the longest text;
-    modifying the bars’ sizes will also modify the borders’ sizes.
-
-    The button's shadows can be turned on and off.
-    The sizes of the shadows are computed from the font size and length of the bar with the longest text;
-    modifying the bars’ sizes will also modify the shadows’ sizes.
-
     The default font is raylib font.
 
-    The menu bars are untilizing the ButtonR class
+    The menu bars untilize the ButtonP class
 
 */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "MenuR.hpp"
+#include "MenuP.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//--------------------------------------------- Class MenuR ---------------------------------------------------
+//--------------------------------------------- Class MenuO ---------------------------------------------------
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -57,9 +48,13 @@
     - raylib default font
 
  ----------------------------------------------------*/
-MenuR::MenuR()
+MenuP::MenuP()
 {
-    for (unsigned i = 0; i < 5; i++) texts.push_back("Menu");
+    for (unsigned i = 0; i < 5; i++)
+    {
+        texts.push_back("Menu");
+        imgPaths.push_back("resources/images/bar1.png");
+    }
 
     buildMenu();
 }
@@ -69,12 +64,13 @@ MenuR::MenuR()
 
     Constructor-1
     - raylib default font
-    texts
+    texts, image paths
 
  ----------------------------------------------------*/
-MenuR::MenuR(vector<string> &texts)
+MenuP::MenuP(vector<string> &texts, vector<string> &imgPaths)
 {
     this->texts = texts;
+    this->imgPaths = imgPaths;
     buildMenu();
 }
 
@@ -83,17 +79,18 @@ MenuR::MenuR(vector<string> &texts)
 
     Constructor-2
     - raylib default font
-    texts, menu position
+    texts, menu position, image paths
 
     CENTER, CENTER_TOP, CENTER_BOTTOM,
     LEFT, LEFT_TOP, LEFT_BOTTOM,
     RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
  ----------------------------------------------------*/
-MenuR::MenuR(vector<string> &texts, unsigned menuPos)
+MenuP::MenuP(vector<string> &texts, unsigned menuPos, vector<string> &imgPaths)
 {
     this->texts = texts;
     this->menuPos = menuPos;
+    this->imgPaths = imgPaths;
     buildMenu();
 }
 
@@ -102,7 +99,7 @@ MenuR::MenuR(vector<string> &texts, unsigned menuPos)
 
     Constructor-3
     - raylib default font
-    texts, menu position, texts position
+    texts, menu position, texts position, image path
 
     menu position:
     CENTER, CENTER_TOP, CENTER_BOTTOM,
@@ -113,11 +110,12 @@ MenuR::MenuR(vector<string> &texts, unsigned menuPos)
     TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
  ----------------------------------------------------*/
-MenuR::MenuR(vector<string> &texts, unsigned menuPos, unsigned textsPos)
+MenuP::MenuP(vector<string> &texts, unsigned menuPos, unsigned textsPos, vector<string> &imgPaths)
 {
     this->texts = texts;
     this->menuPos = menuPos;
     this->textsPos = textsPos;
+    this->imgPaths = imgPaths;
     buildMenu();
 }
 
@@ -125,16 +123,17 @@ MenuR::MenuR(vector<string> &texts, unsigned menuPos, unsigned textsPos)
 /*---------------------------------------------------
 
     Constructor-4
-    - raylib default font
+    - raylib default font, image path
     texts, font, font size
 
  ----------------------------------------------------*/
-MenuR::MenuR(vector<string> &texts, Font &font, float fontSize)
+MenuP::MenuP(vector<string> &texts, Font &font, float fontSize, vector<string> &imgPaths)
 {
     this->texts = texts;
     this->font = font;
     this->fontSize = fontSize;
     isRayFont = false;
+    this->imgPaths = imgPaths;
     buildMenu();
 }
 
@@ -143,7 +142,7 @@ MenuR::MenuR(vector<string> &texts, Font &font, float fontSize)
 
     constructor-5
     - raylib default font
-    texts, menu position, font size
+    texts, menu position, font size, image paths
 
     menu position:
     CENTER, CENTER_TOP, CENTER_BOTTOM,
@@ -151,12 +150,13 @@ MenuR::MenuR(vector<string> &texts, Font &font, float fontSize)
     RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
  ----------------------------------------------------*/
-MenuR::MenuR(vector<string> &texts, unsigned menuPos, Font &font, float fontSize)
+MenuP::MenuP(vector<string> &texts, unsigned menuPos, Font &font, float fontSize, vector<string> &imgPaths)
 {
     this->texts = texts;
     this->menuPos = menuPos;
     this->font = font;
     this->fontSize = fontSize;
+    this->imgPaths = imgPaths;
     isRayFont = false;
     buildMenu();
 }
@@ -166,7 +166,7 @@ MenuR::MenuR(vector<string> &texts, unsigned menuPos, Font &font, float fontSize
 
     constructor-6
     - raylib default font
-    texts, menu position, font size
+    texts, menu position, font size, image paths
 
     menu position:
     CENTER, CENTER_TOP, CENTER_BOTTOM,
@@ -177,15 +177,38 @@ MenuR::MenuR(vector<string> &texts, unsigned menuPos, Font &font, float fontSize
     TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
  ----------------------------------------------------*/
-MenuR::MenuR(vector<string> &texts, unsigned menuPos, unsigned textsPos, Font &font, float fontSize)
+MenuP::MenuP(vector<string> &texts, unsigned menuPos, unsigned textsPos, Font &font, float fontSize, vector<string> &imgPaths)
 {
     this->texts = texts;
     this->menuPos = menuPos;
     this->textsPos = textsPos;
     this->font = font;
     this->fontSize = fontSize;
+    this->imgPaths = imgPaths;
     isRayFont = false;
     buildMenu();
+}
+
+//----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+
+// Destructor
+//---------------------------------------------------------------------------------
+MenuP::~MenuP()
+{
+    for (ButtonP &bar : bars)
+    {
+        //----------------------------------------------------------------------------------
+
+        // De-Initialization Textures
+        //----------------------------------------------------------------------------------
+        UnloadTexture(bar.btnIdle);
+        UnloadTexture(bar.btnHover);
+        UnloadTexture(bar.btnPressed);
+        UnloadTexture(bar.textIdle);
+        UnloadTexture(bar.textHover);
+        UnloadTexture(bar.textPressed);
+    }
 }
 
 //----------------------------------------------------------------------------------
@@ -198,14 +221,12 @@ MenuR::MenuR(vector<string> &texts, unsigned menuPos, unsigned textsPos, Font &f
 /*----------------------------------------------------
 
     Draws menu
-    Not inherited by child classes
 
  -----------------------------------------------------*/
-void MenuR::draw()
+void MenuP::draw()
 {
-    for (ButtonR &bar : bars) bar.draw();
+    for (ButtonP &bar : bars) bar.draw();
 }
-
 
 //----------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------
@@ -220,9 +241,9 @@ void MenuR::draw()
     Builds the Menu,
     computes size from the font size and length of the texts
     Not inherited by child classes
-    
+
  -----------------------------------------------------------*/
-void MenuR::buildMenu()
+void MenuP::buildMenu()
 {
     //---- Builds Bar
     numBars = (unsigned)texts.size(); // the number of bars is computed from the size of the vector texts
@@ -233,26 +254,35 @@ void MenuR::buildMenu()
         bars.clear();
         if (isRayFont) // Default font
         {
-            ButtonR bar; // empty bar, Default ButtonR
+            ButtonP bar; // empty bar, Default ButtonR
             for (unsigned i = 0; i < numBars; i++) bars.push_back(bar);
-            for (unsigned i = 0; i < numBars; i++) bars[i].setText(texts[i]);
+            for (unsigned i = 0; i < numBars; i++)
+            {
+                bars[i].imgPath = imgPaths[i];
+                bars[i].setText(texts[i]);
+               
+            }
         }
         else // Loaded font
         {
-            ButtonR bar("Empty", font, fontSize);
+            ButtonP bar("Empty", font, fontSize);
             for (unsigned i = 0; i < numBars; i++) bars.push_back(bar);
-            for (unsigned i = 0; i < numBars; i++) bars[i].setText(texts[i]);
+            for (unsigned i = 0; i < numBars; i++) 
+            {
+                bars[i].imgPath = imgPaths[i];
+                bars[i].setText(texts[i]);
+            }
         }
     }
     // Computes the bars width and menu width
     // The bars’ sizes are computed from the font size and length of the longest text
     float barsWidth = 0;
-    for (ButtonR &bar : bars) if (bar.rect.width > barsWidth) barsWidth = bar.rect.width + 50;
+    for (ButtonP &bar : bars) if (bar.rect.width > barsWidth) barsWidth = bar.rect.width + 50;
     //-- Menu size
     menuWidth = barsWidth;
     menuHeight = numBars * bars[0].btnHeight + barSpacing * (numBars - 1);
     //-- sets bars size
-    for (ButtonR &bar : bars) bar.setBtnSize(barsWidth, bar.rect.height);
+    for (ButtonP &bar : bars) bar.setBtnSize(barsWidth, bar.rect.height);
 
     //---- Menu position
     int screenWidth = GetScreenWidth();
@@ -305,42 +335,41 @@ void MenuR::buildMenu()
             throw "   -- Error --\n   The entered menu position is not valid a valid entry.\n";
             break;
         }
-    } catch (char const *ERROR) { cout << "\n " << ERROR; }// Catches the exception if it occurs
+    }
+    catch (char const *ERROR) { cout << "\n " << ERROR; }// Catches the exception if it occurs
 
     //---- Bars positions
     float tempBarY = menuY;
-    for (ButtonR &bar : bars)
+    for (ButtonP &bar : bars)
     {
         bar.setBtnPosition(menuX, tempBarY);
         tempBarY += bar.btnHeight + barSpacing;
     }
 
     //---- Texts position
-    for (ButtonR &bar : bars)
-    {  
+    for (ButtonP &bar : bars)
+    {
         try // Error handler
         {
             switch (textsPos)
             {
             case TXT_CENTER:
-                // The ButtonR class centers the texts by default
+                // The ButtonO class centers the texts by default
                 break;
             case TXT_LEFT:
-                bar.setTextPosition(bar.rect.x + 10, bar.textPos.y);
+                bar.setTextPosition(bar.rect.x + txtMargine, bar.textPos.y);
                 break;
             case TXT_RIGHT:
-                bar.setTextPosition(bar.rect.x - 10 + (bar.rect.width - bar.textSize.x), bar.textPos.y);
-                break;
-            case TXT_NONE:
-                // The texts were repositioned using setTextPos()
+                bar.setTextPosition(bar.rect.x - txtMargine + (bar.rect.width - bar.textSize.x), bar.textPos.y);
                 break;
             default:
                 throw "   -- Error --\n   The entered texts' position in menu is not a valid entry.\n";
                 break;
             }
-        } catch (char const *ERROR) { cout << "\n " << ERROR; }// Catches the exception if it occurs
+        }
+        catch (char const *ERROR) { cout << "\n " << ERROR; }// Catches the exception if it occurs
     }
-    
+
 } // buildMenu()
 
 //--------------------------------------------------------------------------------------------------------- Menu bars
@@ -356,21 +385,11 @@ void MenuR::buildMenu()
     RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
  -----------------------------------------------------------*/
-void MenuR::setMenuPosition(unsigned menuPos)
+void MenuP::setMenuPosition(unsigned menuPos)
 {
     this->menuPos = menuPos;
 }
 
-// --------------------------------------------------------------------- Method setBarsColorIdle()
-/*----------------------------------------------------------
-
-    Sets bars color idle
-
- -----------------------------------------------------------*/
-void MenuR::setBarsColorIdle(Color barIdle)
-{
-    for (ButtonR &bar : bars) bar.btnIdle = barIdle;
-}
 
 // --------------------------------------------------------------------- Method setBarsColorPressed()
 /*----------------------------------------------------------
@@ -378,21 +397,22 @@ void MenuR::setBarsColorIdle(Color barIdle)
     Sets bars color pressed
 
  -----------------------------------------------------------*/
-void MenuR::setBarsColorPressed(Color barPressed)
+void MenuP::setBarsColorPressed(Color barPressed)
 {
-    for (ButtonR &bar : bars) bar.btnPressed = barPressed;
+    for (ButtonP &bar : bars) bar.setPressedColor(barPressed);
 }
 
-// --------------------------------------------------------------------- Method setBarsColorHover()
-/*----------------------------------------------------------
+//--------------------------------------------------------------------- Method setBarsColorHover()
+/*----------------------------------------------------
 
-    Sets bars color hover
+     Sets the hover color for bars
 
- -----------------------------------------------------------*/
-void MenuR::setBarsColorHover(Color barHover)
+ -----------------------------------------------------*/
+void MenuP::setBarsColorHover(Color barHoverColor)
 {
-    for (ButtonR &bar : bars) bar.btnHover = barHover;
+    for (ButtonP &bar : bars) bar.setHoverColor(barHoverColor);
 }
+
 
 //--------------------------------------------------------------------- Method setMenuBarsSize()
 /*----------------------------------------------------
@@ -401,91 +421,11 @@ void MenuR::setBarsColorHover(Color barHover)
     does not resise fonts
 
  -----------------------------------------------------*/
-void MenuR::setBarsSize(float barWidth, float barHeight)
+void MenuP::setBarsSize(float barWidth, float barHeight)
 {
-    for (ButtonR &bar : bars) bar.setBtnSize(barWidth, barHeight);
+    for (ButtonP &bar : bars) bar.setBtnSize(barWidth, barHeight);
 }
 
-//--------------------------------------------------------------------------------------------------------- Shadow
-
-//--------------------------------------------------------------------- Method setShadow()
-/*----------------------------------------------------------
-
-    Sets shadow true or false
-
- -----------------------------------------------------------*/
-void MenuR::setShadow(bool isShadow)
-{
-    for (ButtonR &bar : bars) bar.isShadow = isShadow;
-}
-
-// --------------------------------------------------------------------- Method setShadowColor()
-/*----------------------------------------------------------
-
-    Sets shadow color
-
- -----------------------------------------------------------*/
-void MenuR::setShadowsColor(Color shadowColor)
-{
-    for (ButtonR &bar : bars) bar.shadowColor = shadowColor;
-}
-
-//--------------------------------------------------------------------------------------------------------- Border
-
-//--------------------------------------------------------------------- Method setBorder()
-/*----------------------------------------------------------
-
-    Sets border true or false
-
- -----------------------------------------------------------*/
-void MenuR::setBorder(bool isBorder)
-{
-    for (ButtonR &bar : bars) bar.isBorder = isBorder;
-}
-
-// --------------------------------------------------------------------- Method setBordersColorIdle()
-/*----------------------------------------------------------
-
-    Sets borders color idle
-
- -----------------------------------------------------------*/
-void MenuR::setBordersColorIdle(Color borderIdle)
-{
-    for (ButtonR &bar : bars) bar.borderIdle = borderIdle;
-}
-
-// --------------------------------------------------------------------- Method setBordersColorPressed()
-/*----------------------------------------------------------
-
-    Sets borders color pressed
-
- -----------------------------------------------------------*/
-void MenuR::setBordersColorPressed(Color borderPressed)
-{
-    for (ButtonR &bar : bars) bar.borderPressed = borderPressed;
-}
-
-// --------------------------------------------------------------------- Method setBordersColorHover()
-/*----------------------------------------------------------
-
-    Sets borders color hover
-
- -----------------------------------------------------------*/
-void MenuR::setBordersColorHover(Color borderHover)
-{
-    for (ButtonR &bar : bars) bar.borderHover = borderHover;
-}
-
-// --------------------------------------------------------------------- Method setBordersThickness()
-/*----------------------------------------------------------
-
-    Sets borders thickness
-
- -----------------------------------------------------------*/
-void MenuR::setBordersThickness(float borderThickness)
-{
-    for (ButtonR &bar : bars) bar.borderThickness = borderThickness;
-}
 
 //--------------------------------------------------------------------------------------------------------- Text
 
@@ -496,10 +436,10 @@ void MenuR::setBordersThickness(float borderThickness)
      Resizes menu bars to fit text
 
  -----------------------------------------------------*/
-void MenuR::setFontSize(float fontSize)
+void MenuP::setFontSize(float fontSize)
 {
     this->fontSize = fontSize;
-    for (ButtonR &bar : bars) bar.setFontSize(fontSize);
+    for (ButtonP &bar : bars) bar.setFontSize(fontSize);
     isTxtMod = true;
     buildMenu();
 }
@@ -511,10 +451,10 @@ void MenuR::setFontSize(float fontSize)
      does NOT resizes bars to fit text
 
  -----------------------------------------------------*/
-void MenuR::setFontSizeNoResize(float fontSize)
+void MenuP::setFontSizeNoResize(float fontSize)
 {
     this->fontSize = fontSize;
-    for (ButtonR &bar : bars) bar.setFontSizeNoResize(fontSize);
+    for (ButtonP &bar : bars) bar.setFontSizeNoResize(fontSize);
     isTxtMod = true;
     buildMenu();
 }
@@ -530,7 +470,7 @@ void MenuR::setFontSizeNoResize(float fontSize)
      the bars indexes start at 0
 
  -----------------------------------------------------*/
-void MenuR::setTextBar(string text, unsigned barIndex)
+void MenuP::setTextBar(string text, unsigned barIndex)
 {
     float barHeight = bars[barIndex].rect.height;
     bars[barIndex].setText(text);
@@ -550,17 +490,9 @@ void MenuR::setTextBar(string text, unsigned barIndex)
     TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
  -----------------------------------------------------------*/
-void MenuR::setTxtPosition(unsigned textsPos)
+void MenuP::setTxtPosition(unsigned textsPos)
 {
     this->textsPos = textsPos;
     isTxtMod = true;
     buildMenu();
 }
-
-
-//----------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------
-
-// Class Methods Operations (private)
-//---------------------------------------------------------------------------------
-

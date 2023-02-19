@@ -80,7 +80,7 @@ public:
     string text = "Button";
     Vector2 textSize = MeasureTextEx(font, text.c_str(), fontSize, fontSpacing),
             oneCharSize = MeasureTextEx(font, "C", fontSize, fontSpacing);
-
+    bool isTxtRepos = false;
     //--- Button position, size, color
     /*
         The button size is computed from the font size and length of the text

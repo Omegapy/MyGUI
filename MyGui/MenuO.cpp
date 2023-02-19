@@ -31,7 +31,7 @@
 
     The default font is raylib font.
     
-    The menu bars are untilizing the ButtonO class
+    The menu bars untilize the ButtonO class
 
 
 */
@@ -41,7 +41,7 @@
 #include "MenuO.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//--------------------------------------------- Class MenuR ---------------------------------------------------
+//--------------------------------------------- Class MenuO ---------------------------------------------------
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -74,7 +74,7 @@ MenuO::MenuO()
     texts
 
  ----------------------------------------------------*/
-MenuO::MenuO(vector<string> texts)
+MenuO::MenuO(vector<string> &texts)
 {
     this->texts = texts;
     buildMenu();
@@ -92,7 +92,7 @@ MenuO::MenuO(vector<string> texts)
     RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
  ----------------------------------------------------*/
-MenuO::MenuO(vector<string> texts, unsigned menuPos)
+MenuO::MenuO(vector<string> &texts, unsigned menuPos)
 {
     this->texts = texts;
     this->menuPos = menuPos;
@@ -115,7 +115,7 @@ MenuO::MenuO(vector<string> texts, unsigned menuPos)
     TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
  ----------------------------------------------------*/
-MenuO::MenuO(vector<string> texts, unsigned menuPos, unsigned textsPos)
+MenuO::MenuO(vector<string> &texts, unsigned menuPos, unsigned textsPos)
 {
     this->texts = texts;
     this->menuPos = menuPos;
@@ -131,7 +131,7 @@ MenuO::MenuO(vector<string> texts, unsigned menuPos, unsigned textsPos)
     texts, font, font size
 
  ----------------------------------------------------*/
-MenuO::MenuO(vector<string> texts, Font &font, float fontSize)
+MenuO::MenuO(vector<string> &texts, Font &font, float fontSize)
 {
     this->texts = texts;
     this->font = font;
@@ -153,7 +153,7 @@ MenuO::MenuO(vector<string> texts, Font &font, float fontSize)
     RIGHT, RIGHT_TOP, RIGHT_BOTTOM
 
  ----------------------------------------------------*/
-MenuO::MenuO(vector<string> texts, unsigned menuPos, Font &font, float fontSize)
+MenuO::MenuO(vector<string> &texts, unsigned menuPos, Font &font, float fontSize)
 {
     this->texts = texts;
     this->menuPos = menuPos;
@@ -179,7 +179,7 @@ MenuO::MenuO(vector<string> texts, unsigned menuPos, Font &font, float fontSize)
     TXT_CENTER, TXT_LEFT, TXT_RIGHT
 
  ----------------------------------------------------*/
-MenuO::MenuO(vector<string> texts, unsigned menuPos, unsigned textsPos, Font &font, float fontSize)
+MenuO::MenuO(vector<string> &texts, unsigned menuPos, unsigned textsPos, Font &font, float fontSize)
 {
     this->texts = texts;
     this->menuPos = menuPos;
@@ -369,9 +369,9 @@ void MenuO::setMenuPosition(unsigned menuPos)
     Sets bars color idle
 
  -----------------------------------------------------------*/
-void MenuO::setBarsColorIdle(Color borderIdle)
+void MenuO::setBarsColorIdle(Color barIdle)
 {
-    for (ButtonO &bar : bars) bar.btnIdle = borderIdle;
+    for (ButtonO &bar : bars) bar.btnIdle = barIdle;
 }
 
 // --------------------------------------------------------------------- Method setBarsColorPressed()
@@ -380,9 +380,9 @@ void MenuO::setBarsColorIdle(Color borderIdle)
     Sets bars color pressed
 
  -----------------------------------------------------------*/
-void MenuO::setBarsColorPressed(Color btnPressed)
+void MenuO::setBarsColorPressed(Color barPressed)
 {
-    for (ButtonO &bar : bars) bar.btnPressed = btnPressed;
+    for (ButtonO &bar : bars) bar.btnPressed = barPressed;
 }
 
 // --------------------------------------------------------------------- Method setBarsColorHover()
@@ -391,15 +391,15 @@ void MenuO::setBarsColorPressed(Color btnPressed)
     Sets bars color hover
 
  -----------------------------------------------------------*/
-void MenuO::setBarsColorHover(Color borderHover)
+void MenuO::setBarsColorHover(Color barHover)
 {
-    for (ButtonO &bar : bars) bar.btnHover = borderHover;
+    for (ButtonO &bar : bars) bar.btnHover = barHover;
 }
 
 // --------------------------------------------------------------------- Method setbBarsRoundness()
 /*----------------------------------------------------------
 
-    Sets shadow color
+    Sets roundness color
 
  -----------------------------------------------------------*/
 void MenuO::setbBarsRoundness(float roundness)

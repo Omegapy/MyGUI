@@ -325,7 +325,6 @@ void ButtonP::setText(string text)
 
      Sets text and
      does NOT resizes button to fit text
-     Takes a string
 
  -----------------------------------------------------*/
 void ButtonP::setTextNoResize(string text)
@@ -339,13 +338,15 @@ void ButtonP::setTextNoResize(string text)
 /*----------------------------------------------------
 
      Sets text position
-     does NOT resizes button to fit text
+     does NOT resizes button 
 
  -----------------------------------------------------*/
 void ButtonP::setTextPosition(float x, float y)
 {
     textPos.x = x;
     textPos.y = y;
+    isTxtRepos = true;
+    buildBtn();
 }
 
 //--------------------------------------------------------------------- Method setHoverColor()
@@ -425,7 +426,7 @@ void ButtonP::buildBtn()
     */
 
     float ratioWidth = (isRayFont) ? 3.4f : 4.0f,
-          ratioHeight = (isRayFont) ? 2.2f : 2.0f;
+        ratioHeight = (isRayFont) ? 2.2f : 2.0f;
     textSize = MeasureTextEx(font, text.c_str(), fontSize, fontSpacing);
     oneCharSize = MeasureTextEx(font, "C", fontSize, fontSpacing);
 
@@ -440,7 +441,7 @@ void ButtonP::buildBtn()
         originalRect.x = 0;
         originalRect.y = 0;
     }
-    else 
+    else
     {
         btnPos = { rect.x, rect.y };
         originalRect = rect; // for width and height
@@ -448,12 +449,14 @@ void ButtonP::buildBtn()
         originalRect.y = 0;
     }
     //--- Centers text in button
-    textPos =
+    if (!isTxtRepos)
     {
-        rect.x + (rect.width - textSize.x) / 2,
-        rect.y + (rect.height - textSize.y) / 2
-    };
-
+        textPos =
+        {
+            rect.x + (rect.width - textSize.x) / 2,
+            rect.y + (rect.height - textSize.y) / 2
+        };
+    }
     // Text position and size
     rectText = { textPos.x, textPos.y, textSize.x, textSize.y },
                // Init original rectangle text
