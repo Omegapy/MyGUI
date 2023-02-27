@@ -238,106 +238,102 @@ int main()
     Font font1 = LoadFont("resources/fonts/monofonto.otf");
     Font font2 = LoadFont("resources/fonts/segoeui.ttf");
 
+    //---------------------- Rectangle buttons
+    //ButtonR btnR1;
+    //-- Shadow
+    //btnR1.isShadow = false;
+    //btnR1.shadowColor = GREEN;
+    //btnR1.setShadowPos(btnR1.rect.x + 10, btnR1.rect.y + 10);
+    //btnR1.setShadowSize(btnR1.rect.width + 10, btnR1.rect.height + 10);
+    //-- Button
+    //btnR1.btnIdle = PURPLE; // button idle
+    //btnR1.btnHover = YELLOW; // button Hover
+    //btnR1.btnPressed = GREEN; // button Pressed
+    //btnR1.setBtnPosition(btnR1.rect.x + 25, btnR1.rect.y + 25);
+    //-- Border
+    //btnR1.isBorder = false;
+    //btnR1.borderIdle = PURPLE; // border idle
+    //btnR1.borderHover = YELLOW; // border Hover
+    //btnR1.borderPressed = GREEN; // border Pressed
+    //btnR1.borderThickness = 6;
+    //-- Text and font
+    //btnR1.setFont(font1);
+    //btnR1.setText("Continue");
+    //btnR1.setTextNoResize("up");
+    //btnR1.setTextPosition(btnR1.rect.x + 10, btnR1.rect.y + 10);
+    //btnR1.setFontSize(24);
+    //btnR1.setFontSizeNoResize(34);
+    //btnR1.fontColor = GRAY;
 
+    ButtonR btnR2("Continue", 100, 225, font1);
+    ButtonR btnR3("Play", 100, 300, font2);
 
-    //------ Rectangle buttons
-    //ButtonR btn1;
-    //btn1.isShadow = false;
-    //btn1.btnIdle = PURPLE; // button idle
-    //btn1. borderThickness = 4;
-    //btn1.isBorder = false;
-    //btn1.setText("Continue");
-    //btn1.setTextNoResize("up");
-    //btn1.setTextPosition(btn1.rect.x, btn1.rect.y);
-    //btn1.setFontSize(24);
-    //btn1.setFontSizeNoResize(34);
+    //----------------------  Rounded rectangle buttons
+    ButtonO btnO1("Button", 450, 100);
+    //btnO1.roundness = 1.0f;
+    ButtonO btnO2("Button", 450, 225, font1);
+    ButtonO btnO3("Button", 450, 300, font2);
 
-    //ButtonR btn2("Continue", 100, 225, font1);
-    //btn2.isShadow = false;
-    //ButtonR btn3("Button", 100, 300, font2);
-
-
-    //------- Rounded rectangle buttons
-    //ButtonO btn4("Button", 450, 100);
-    //btn4.isShadow = false;
-    //btn4.btnIdle = PURPLE; // button idle
-    //btn4.borderThickness = 4;
-    //btn4.isBorder = false;
-    //btn4.setText("Continue");
-    //btn4.setTextNoResize("up");
-    //btn4.setTextPosition(btn1.rect.x, btn1.rect.y);
-    //btn4.setFontSize(64);
-    //btn4.setFontSizeNoResize(34);
-
-    //ButtonO btn5("Button",450, 225, font1);
-    //ButtonO btn6("Button", 450, 300, font2);
-
-    //------- Images buttons
-    //ButtonP btn7;
-    //btn7.setHoverColor(PURPLE);
-    //btn7.setTextNoResize("up");
-    //btn7.setTextPosition(btn1.rect.x, btn1.rect.y);
-    //btn7.setFontSize(24);
-    //btn7.setFontSizeNoResize(34);
-    //ButtonP btn8("Button", 750, 225, "resources/images/button1.png", font1);
-    //btn8.setFontSize(34);
-    //ButtonP btn9("Button", 750, 325, "resources/images/button1.png", font2);
+    //----------------------  Images buttons
+    ButtonP btnP1;
+    //btnP1.setFont(font1);
+    ButtonP btnP2("Button", 750, 225, "resources/images/button1.png", font1);
+    //-- Button
+    //btnP2.setHoverColor(YELLOW);
+    //btnP2.setPressedColor(GREEN);
+    //btnP2.setBtnPosition(btnP2.rect.x + 15, btnP2.rect.y + 15);
+    //btnP2.setBtnSize(btnP2.rect.width + 15, btnP2.rect.height + 15);
+    //-- Text and font
+    //btnP2.setTextNoResize("up");
+    //btnP2.setTextPosition(btnP2.rect.x + 15, btnP2.rect.y + 15);
+    //btnP2.setFontSize(24);
+    //btnP2.setFontSizeNoResize(34);
+    //btnP2.fontColor = BLACK;
+    ButtonP btnP3("Button", 750, 325, "resources/images/button1.png", font2);
 
 
     vector<string> menuTxt = { "START", "RESUME", "NEXT", "ABOUT", "EXIT" };
 
-    //MenuR menuDefaultR;
+    MenuR menuDefaultR;
+    //menuDefaultR.setFont(font1);
+    //menuDefaultR.setBarSpacing(25.0f);
     //MenuR menuR1(menuTxt);
     //MenuR menuR2(menuTxt, CENTER);
     //MenuR menuR3(menuTxt, CENTER, TXT_RIGHT);
     //MenuR menuR4(menuTxt, CENTER, font2, 32);
-    //MenuR menuR5(menuTxt, CENTER, TXT_CENTER, font1, 32);
-    // Shadow
+    MenuR menuR5(menuTxt, CENTER, TXT_CENTER, font1, 32);
+    //-- Shadow
     //menuR5.setShadow(false);
     //menuR5.setShadowsColor(GREEN);
-    //menuR5.setBordersColorIdle(BLUE);
-    // Border
+    //menuR5.AddToShadowsPos(5, 5);
+    //menuR5.AddToShadowsSize(5, 5);
+    //--- Border
     //menuR5.setBordersThickness(5);
-    //menuR5.setBordersColorPressed(YELLOW);
-    //menuR5.setBordersColorHover(WHITE);
+    //menuR5.setBordersColorIdle({ GREEN, DARKGREEN, YELLOW, DARKBLUE, BLUE });
+    //menuR5.setBordersColorPressed({ RED, RED, RED, RED, RED });
+    //menuR5.setBordersColorHover({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN } );
     //menu5.setBorder(false);
-    // Button rect.
-    //menuR5.setBarsColorIdle(BLUE);
-    //menuR5.setBarsColorPressed(YELLOW);
-    //menuR5.setBarsColorHover(WHITE);
+    //--- Button
+    //menuR5.setBarsColorIdle({ GREEN, DARKGREEN, YELLOW, DARKBLUE, BLUE });
+    //menuR5.setBarsColorPressed({ RED, RED, RED, RED, RED });
+    //menuR5.setBarsColorHover({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN } );
+    //--- Text and font
     //menuR5.setFontSize(58);
     //menuR5.setFontSizeNoResize(24);
     //menuR5.setTextBar("----------------------Mod.Text Bar------------------", 3);
     //menuR5.setTextBar("Mod.Text Bar", 3);
     //menuR5.setTxtPosition(TXT_LEFT);
-
+    //menuR5.setFontsColor({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN });
 
     //MenuO menuDefaultO;
     //MenuO menuO1(menuTxt);
     //MenuO menuO2(menuTxt, CENTER);
     //MenuO menuO3(menuTxt, CENTER, TXT_RIGHT);
     //MenuO menuO4(menuTxt, CENTER, font2, 32);
-    //MenuO menuO5(menuTxt, CENTER, TXT_CENTER, font1, 32);
-    // Shadow
-    //menuO5.setShadow(false);
-    //menuO5.setShadowsColor(GREEN);
-    //menu5.setBordersColorIdle(BLUE);
-    // Border
-    //menuO5.setBordersThickness(5);
-    //menuO5.setBordersColorPressed(YELLOW);
-    //menuO5.setBordersColorHover(WHITE);
-    //menuO5.setBorder(false);
-    // Button rect.
-    //menuO5.setBarsColorIdle(BLUE);
-    //menuO5.setBarsColorPressed(YELLOW);
-    //menuO5.setBarsColorHover(WHITE);
-    //menuO5.setFontSize(58);
-    //menuO5.setFontSizeNoResize(24);
-    //menuO5.setTextBar("----------------------Mod.Text Bar------------------", 3);
-    //menuO5.setTextBar("Mod.Text Bar", 3);
-    //menuO5.setTxtPosition(TXT_LEFT);
+    MenuO menuO5(menuTxt, CENTER, TXT_CENTER, font1, 32);
+    
 
-    MenuP menuDefaultP;
+    //MenuP menuDefaultP;
     //MenuP menuP1(menuTxt);
     //MenuP menuP2(menuTxt, CENTER);
     //MenuP menuP3(menuTxt, CENTER, TXT_RIGHT);
@@ -363,39 +359,40 @@ int main()
 
             ClearBackground(BLACK);
 
+            //---------------------- Rectangle buttons
+            //btnR1.draw();
+            //btnR2.draw();
+            //btnR3.draw();
+            //---------------------- Round buttons
+            //btnO1.draw();
+            //btnO2.draw();
+            //btnO3.draw();
+            //---------------------- Image buttons
+            //btnP1.draw();
+            //btnP2.draw();
+            //btnP3.draw();
+
+            //---------------------- Rectangle menu
             //menuDefaultR.draw();
             //menuR1.draw();
             //menuR2.draw();
             //menuR3.draw();
             //menuR4.draw();
-            //menuR5.draw();
-
+            menuR5.draw();
+            //---------------------- Round Menu
             //menuDefaultO.draw();
             //menuO1.draw();
             //menuO2.draw();
             //menuO3.draw();
             //menuO4.draw();
             //menuO5.draw();
-
-            menuDefaultP.draw();
+            //---------------------- Image buttons
+            //menuDefaultP.draw();
             //menuP1.draw();
             //menuP2.draw();
             //menuP3.draw();
             //menuP4.draw();
             //menuP5.draw();
-
-
-            /*btn1.draw();
-            btn2.draw();
-            btn3.draw();
-
-            btn4.draw();
-            btn5.draw();
-            btn6.draw();
-
-            btn7.draw();
-            btn8.draw();
-            btn9.draw();*/
 
 
         EndDrawing();

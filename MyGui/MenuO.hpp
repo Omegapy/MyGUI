@@ -92,6 +92,7 @@ public:
     vector<string> texts;
     // Texts postion in bars
     unsigned textsPos = TXT_LEFT;
+    float txtMargine = 10; // text margine left and right 
     // font
     Font font;
     float fontSize = 0.0f;

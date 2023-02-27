@@ -85,7 +85,7 @@ public:
     float fontSize = 32,
           fontSpacing = 3.0f;
     Color fontColor = BLACK;
-    bool isRayFont = true;
+    bool isRayFont= true;
 
     //---- Text
     string text = "Button";
@@ -123,7 +123,8 @@ public:
           borderPressed = { 0, 105, 92, 100 },
           borderIdle = borderLiveColor; 
     float borderThickness = (rect.width + rect.height) / 150;
-    bool isBorder = true;
+    bool isBorder = true,
+         isBorderResized = false;
 
     //---- Shaddow
     /*
@@ -252,7 +253,7 @@ public:
 
     // Accessors Methods
     //----------------------------------------------------------------------------------
-
+    
 
     /*----------------------------------------------------
 
@@ -286,6 +287,18 @@ public:
      -----------------------------------------------------*/
     int update();
 
+    //---------------------------------------------------------------------------------- Text and font
+
+
+    /*----------------------------------------------------
+
+        Sets font and
+        Resizes button to fit text
+        isRayFont = false;
+
+     -----------------------------------------------------*/
+    void setFont(Font font);
+
     /*----------------------------------------------------
 
         Sets font size and
@@ -306,18 +319,21 @@ public:
 
     /*----------------------------------------------------
 
-         Sets text and
-         Resizes button to fit text
-         Takes a string
+        Sets text and
+        Resizes button to fit text
+        Takes a string
 
      -----------------------------------------------------*/
     void setText(string text);
 
     /*----------------------------------------------------
 
-         Sets text and
-         does NOT resizes button to fit text
-         Takes a string
+        Sets text and
+        does NOT resizes button to fit text
+        Takes a string
+
+        It will reset Text position to the center of the
+        button
 
      -----------------------------------------------------*/
     void setTextNoResize(string text);
@@ -329,10 +345,16 @@ public:
 
      -----------------------------------------------------*/
     void setTextPosition(float x, float y);
+
+    //---------------------------------------------------------------------------------- Button
    
     /*----------------------------------------------------
 
        Sets the button position in the screen
+       Also moves the border and shadow
+
+       It will reset Text position to the center of the
+       button
 
      -----------------------------------------------------*/
     void setBtnPosition(float btnX, float btnY);
@@ -344,6 +366,23 @@ public:
 
      -----------------------------------------------------*/
     void setBtnSize(float btnWidth, float btnHeight);
+
+    //---------------------------------------------------------------------------------- Shadow
+
+    /*----------------------------------------------------
+
+        Sets shadow position
+
+     -----------------------------------------------------*/
+    void setShadowPos(float x, float y);
+
+    /*----------------------------------------------------
+
+        Sets shadow size.
+
+     -----------------------------------------------------*/
+    void setShadowSize(float width, float height);
+
 
 private:
 

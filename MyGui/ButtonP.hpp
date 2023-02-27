@@ -229,6 +229,17 @@ public:
      -----------------------------------------------------*/
     int update();
 
+    //---------------------------------------------------------------------------------- Text and font
+
+    // --------------------------------------------------------------------- Method setFont()
+    /*----------------------------------------------------
+
+        Sets font and
+        Resizes button to fit text
+        isRayFont = false; 
+
+     -----------------------------------------------------*/
+    void ButtonP::setFont(Font font);
 
     /*----------------------------------------------------
 
@@ -250,18 +261,18 @@ public:
 
     /*----------------------------------------------------
 
-         Sets text and
-         Resizes button to fit text
-         Takes a string
+        Sets text and
+        Resizes button to fit text
+        Takes a string
 
      -----------------------------------------------------*/
     void setText(string text);
 
     /*----------------------------------------------------
 
-         Sets text and
-         does NOT resizes button to fit text
-         Takes a string
+        Sets text and
+        does NOT resizes button to fit text
+        Takes a string
 
      -----------------------------------------------------*/
     void setTextNoResize(string text);
@@ -274,12 +285,15 @@ public:
      -----------------------------------------------------*/
     void setTextPosition(float x, float y);   
 
+    //---------------------------------------------------------------------------------- Button
+
     /*----------------------------------------------------
 
         Sets the hover color for button and text
 
      -----------------------------------------------------*/
     void setHoverColor(Color btnHoverColor);
+
 
     /*----------------------------------------------------
 
@@ -291,9 +305,10 @@ public:
     /*----------------------------------------------------
 
        Sets the button position in the screen
+       Also moves the border and shadow
 
      -----------------------------------------------------*/
-    void ButtonP::setBtnPosition(float btnX, float btnY);
+    void setBtnPosition(float btnX, float btnY);
 
     /*----------------------------------------------------
 

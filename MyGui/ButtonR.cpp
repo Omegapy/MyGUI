@@ -367,21 +367,38 @@ void ButtonR::buildBtn()
         rect.x + (rect.width - textSize.x) / 2,
         rect.y + (rect.height - textSize.y) / 2
     };
-
+    
     //---- Button border  
     border = rect;
-    borderThickness = (rect.width + rect.height) / 150;
 
     //---- Button shadow
     shadow = { rect.x + 5,  rect.y + 5, rect.width, rect.height };
 
 } // build_btn()
 
+//--------------------------------------------------------------------------------------------------------- Text and font
+
+// --------------------------------------------------------------------- Method setFont()
+/*----------------------------------------------------
+
+    Sets font and
+    Resizes button to fit text
+    isRayFont = false;
+
+ -----------------------------------------------------*/
+void ButtonR::setFont(Font font)
+{
+    this->font = font;
+    txtResizeBtn = true;
+    isRayFont = false;
+    buildBtn();
+}
+
 //--------------------------------------------------------------------- Method setFontSize()
 /*----------------------------------------------------
 
-     Sets font size and
-     Resizes button to fit text
+    Sets font size and
+    Resizes button to fit text
 
  -----------------------------------------------------*/
 void ButtonR::setFontSize(float fontSize)
@@ -394,8 +411,8 @@ void ButtonR::setFontSize(float fontSize)
 //--------------------------------------------------------------------- Method setFontSizeNoResize()
 /*----------------------------------------------------
 
-     Sets font size and
-     does NOT resizes button to fit text
+    Sets font size and
+    does NOT resizes button to fit text
 
  -----------------------------------------------------*/
 void ButtonR::setFontSizeNoResize(float fontSize)
@@ -408,9 +425,9 @@ void ButtonR::setFontSizeNoResize(float fontSize)
 //--------------------------------------------------------------------- Method setText()
 /*----------------------------------------------------
 
-     Sets text and
-     Resizes button to fit text
-     Takes a string
+    Sets text and
+    Resizes button to fit text
+    Takes a string
 
  -----------------------------------------------------*/
 void ButtonR::setText(string text) 
@@ -423,9 +440,12 @@ void ButtonR::setText(string text)
 //--------------------------------------------------------------------- Method setTextNoResize()
 /*----------------------------------------------------
 
-     Sets text and 
-     does NOT resizes button to fit text
-     Takes a string
+    Sets text and 
+    does NOT resizes button to fit text
+    Takes a string
+
+    It will reset Text position to the center of the
+    button
 
  -----------------------------------------------------*/
 void ButtonR::setTextNoResize(string text) 
@@ -448,11 +468,16 @@ void ButtonR::setTextPosition(float x, float y)
     textPos.y = y;
 }
 
+//--------------------------------------------------------------------------------------------------------- Button
 
 //--------------------------------------------------------------------- Method setBtnPosition()
 /*----------------------------------------------------
 
-     Sets the button position in the screen
+    Sets the button position in the screen
+    Also moves the border and shadow
+
+    It will reset Text position to the center of the
+    button
 
  -----------------------------------------------------*/
 void ButtonR::setBtnPosition(float btnX, float btnY)
@@ -468,6 +493,9 @@ void ButtonR::setBtnPosition(float btnX, float btnY)
     Sets sizes of the button,
     does not resise fonts
 
+    It will reset Text position to the center of the
+    button
+
  -----------------------------------------------------*/
 void ButtonR::setBtnSize(float btnWidth, float btnHeight)
 {
@@ -477,6 +505,29 @@ void ButtonR::setBtnSize(float btnWidth, float btnHeight)
     buildBtn();
 }
 
+//--------------------------------------------------------------------------------------------------------- Shadow
+
+//--------------------------------------------------------------------- Method setShadowPos()
+/*----------------------------------------------------
+
+    Sets shadow position.
+
+ -----------------------------------------------------*/
+void ButtonR::setShadowPos(float x, float y)
+{
+    shadow = { x, y, shadow.width, shadow.height };
+}
+
+//--------------------------------------------------------------------- Method setShadowSize()
+/*----------------------------------------------------
+
+    Sets shadow size.
+
+ -----------------------------------------------------*/
+void ButtonR::setShadowSize(float width, float height)
+{
+    shadow = { shadow.x, shadow.y, width, height };
+}
 
 //----------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------

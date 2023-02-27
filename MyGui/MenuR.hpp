@@ -93,11 +93,13 @@ public:
     vector<string> texts;
     // Texts postion in bars
     unsigned textsPos = TXT_LEFT;
-    // font
+    float txtMargine = 10; // text margine left and right 
+    // font 
     Font font;
     float fontSize = 0.0f;
     bool isRayFont = true;
     bool isTxtMod = false;
+
 
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
@@ -222,7 +224,7 @@ public:
      -----------------------------------------------------------*/
     void buildMenu();
 
-    //---------------------------------------------------------------------------------- Menu bars
+    //---------------------------------------------------------------------------------- Menu 
 
     /*----------------------------------------------------------
 
@@ -238,24 +240,33 @@ public:
 
     /*----------------------------------------------------------
 
+        Sets Bar spacing
+
+     -----------------------------------------------------------*/
+    void setBarSpacing(float barSpacing);
+
+    //---------------------------------------------------------------------------------- Bar
+
+    /*----------------------------------------------------------
+
         Sets bars color
 
      -----------------------------------------------------------*/
-    void setBarsColorIdle(Color barIdle);
+    void setBarsColorIdle(vector<Color> barsIdle);
 
     /*----------------------------------------------------------
 
         Sets bars color pressed
 
      -----------------------------------------------------------*/
-    void setBarsColorPressed(Color barPressed);
+    void setBarsColorPressed(vector<Color> barsPressed);
 
     /*----------------------------------------------------------
 
         Sets bars color hover
 
      -----------------------------------------------------------*/
-    void setBarsColorHover(Color barHover);
+    void setBarsColorHover(vector<Color> barsHover);
 
     /*----------------------------------------------------
 
@@ -281,6 +292,19 @@ public:
      -----------------------------------------------------------*/
     void setShadowsColor(Color shadowColor);
 
+    /*----------------------------------------------------------
+
+        Adds to shadow position relative to bars
+
+     -----------------------------------------------------------*/
+    void AddToShadowsPos(float AddToX, float AddToY);
+
+    /*----------------------------------------------------------
+
+      Add to shadow size 
+
+    -----------------------------------------------------------*/
+    void AddToShadowsSize(float AddToWidth, float AddToHeight);
 
     //---------------------------------------------------------------------------------- Border
 
@@ -296,21 +320,21 @@ public:
         Sets border color
 
      -----------------------------------------------------------*/
-    void setBordersColorIdle(Color borderIdle);
+    void setBordersColorIdle(vector<Color> bordersIdle);
 
     /*----------------------------------------------------------
 
         Sets border color pressed
 
      -----------------------------------------------------------*/
-    void setBordersColorPressed(Color borderPressed);
+    void setBordersColorPressed(vector<Color> bordersPressed);
 
     /*----------------------------------------------------------
 
         Sets border color hover
 
      -----------------------------------------------------------*/
-    void setBordersColorHover(Color borderHover);
+    void setBordersColorHover(vector<Color> bordersHover);
 
     /*----------------------------------------------------------
 
@@ -320,7 +344,16 @@ public:
     void setBordersThickness(float borderThickness);
 
 
-    //---------------------------------------------------------------------------------- Text
+    //---------------------------------------------------------------------------------- Text and font
+
+    /*----------------------------------------------------
+
+        Sets font and
+        Resizes button to fit text
+        isRayFont = false;
+
+     -----------------------------------------------------*/
+    void setFont(Font font);
 
     /*----------------------------------------------------
 
@@ -359,6 +392,13 @@ public:
 
      -----------------------------------------------------------*/
     void setTxtPosition(unsigned textsPos);
+
+    /*----------------------------------------------------------
+
+        Sets fonts color
+
+     -----------------------------------------------------------*/
+    void setFontsColor(vector<Color> fontsColor);
 
 private:
 

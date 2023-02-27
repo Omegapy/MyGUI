@@ -62,8 +62,8 @@
 MenuO::MenuO()
 {
     for (unsigned i = 0; i < 5; i++) texts.push_back("Menu");
-
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-1
@@ -78,6 +78,7 @@ MenuO::MenuO(vector<string> &texts)
 {
     this->texts = texts;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-2
@@ -97,6 +98,7 @@ MenuO::MenuO(vector<string> &texts, unsigned menuPos)
     this->texts = texts;
     this->menuPos = menuPos;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-3
@@ -121,6 +123,7 @@ MenuO::MenuO(vector<string> &texts, unsigned menuPos, unsigned textsPos)
     this->menuPos = menuPos;
     this->textsPos = textsPos;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-4
@@ -138,6 +141,7 @@ MenuO::MenuO(vector<string> &texts, Font &font, float fontSize)
     this->fontSize = fontSize;
     isRayFont = false;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-5
@@ -161,6 +165,7 @@ MenuO::MenuO(vector<string> &texts, unsigned menuPos, Font &font, float fontSize
     this->fontSize = fontSize;
     isRayFont = false;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-6
@@ -188,6 +193,7 @@ MenuO::MenuO(vector<string> &texts, unsigned menuPos, unsigned textsPos, Font &f
     this->fontSize = fontSize;
     isRayFont = false;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //----------------------------------------------------------------------------------
@@ -327,10 +333,10 @@ void MenuO::buildMenu()
                 // The ButtonO class centers the texts by default
                 break;
             case TXT_LEFT:
-                bar.setTextPosition(bar.rect.x + 10, bar.textPos.y);
+                bar.setTextPosition(bar.rect.x + txtMargine, bar.textPos.y);
                 break;
             case TXT_RIGHT:
-                bar.setTextPosition(bar.rect.x - 10 + (bar.rect.width - bar.textSize.x), bar.textPos.y);
+                bar.setTextPosition(bar.rect.x - txtMargine + (bar.rect.width - bar.textSize.x), bar.textPos.y);
                 break;
             case TXT_NONE:
                 // The texts were repositioned using setTextPos()

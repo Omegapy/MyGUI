@@ -60,8 +60,8 @@
 MenuR::MenuR()
 {
     for (unsigned i = 0; i < 5; i++) texts.push_back("Menu");
-
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-1
@@ -76,6 +76,7 @@ MenuR::MenuR(vector<string> &texts)
 {
     this->texts = texts;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-2
@@ -95,6 +96,7 @@ MenuR::MenuR(vector<string> &texts, unsigned menuPos)
     this->texts = texts;
     this->menuPos = menuPos;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-3
@@ -119,6 +121,7 @@ MenuR::MenuR(vector<string> &texts, unsigned menuPos, unsigned textsPos)
     this->menuPos = menuPos;
     this->textsPos = textsPos;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-4
@@ -136,6 +139,7 @@ MenuR::MenuR(vector<string> &texts, Font &font, float fontSize)
     this->fontSize = fontSize;
     isRayFont = false;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-5
@@ -159,6 +163,7 @@ MenuR::MenuR(vector<string> &texts, unsigned menuPos, Font &font, float fontSize
     this->fontSize = fontSize;
     isRayFont = false;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //--------------------------------------------------------------------- Constructor-6
@@ -186,6 +191,7 @@ MenuR::MenuR(vector<string> &texts, unsigned menuPos, unsigned textsPos, Font &f
     this->fontSize = fontSize;
     isRayFont = false;
     buildMenu();
+    for (ButtonR &bar : bars) bar.borderThickness = 2.0f;
 }
 
 //----------------------------------------------------------------------------------
@@ -246,7 +252,6 @@ void MenuR::buildMenu()
     }
     // Computes the bars width and menu width
     // The bars’ sizes are computed from the font size and length of the longest text
-    float barsWidth = 0;
     for (ButtonR &bar : bars) if (bar.rect.width > barsWidth) barsWidth = bar.rect.width + 50;
     //-- Menu size
     menuWidth = barsWidth;
@@ -326,10 +331,10 @@ void MenuR::buildMenu()
                 // The ButtonR class centers the texts by default
                 break;
             case TXT_LEFT:
-                bar.setTextPosition(bar.rect.x + 10, bar.textPos.y);
+                bar.setTextPosition(bar.rect.x + txtMargine, bar.textPos.y);
                 break;
             case TXT_RIGHT:
-                bar.setTextPosition(bar.rect.x - 10 + (bar.rect.width - bar.textSize.x), bar.textPos.y);
+                bar.setTextPosition(bar.rect.x - txtMargine + (bar.rect.width - bar.textSize.x), bar.textPos.y);
                 break;
             case TXT_NONE:
                 // The texts were repositioned using setTextPos()
@@ -343,7 +348,7 @@ void MenuR::buildMenu()
     
 } // buildMenu()
 
-//--------------------------------------------------------------------------------------------------------- Menu bars
+//--------------------------------------------------------------------------------------------------------- Menu 
 
 // --------------------------------------------------------------------- Method setMenuPosition()
 /*----------------------------------------------------------
@@ -361,15 +366,28 @@ void MenuR::setMenuPosition(unsigned menuPos)
     this->menuPos = menuPos;
 }
 
+/*----------------------------------------------------------
+
+    Sets Bar spacing
+
+ -----------------------------------------------------------*/
+void MenuR::setBarSpacing(float barSpacing)
+{
+    this->barSpacing = barSpacing;
+    buildMenu();
+}
+
+//--------------------------------------------------------------------------------------------------------- Bars
+
 // --------------------------------------------------------------------- Method setBarsColorIdle()
 /*----------------------------------------------------------
 
     Sets bars color idle
 
  -----------------------------------------------------------*/
-void MenuR::setBarsColorIdle(Color barIdle)
+void MenuR::setBarsColorIdle(vector<Color> barsIdle)
 {
-    for (ButtonR &bar : bars) bar.btnIdle = barIdle;
+    for (unsigned i = 0; i < bars.size(); i++) bars[i].btnIdle = barsIdle[i];
 }
 
 // --------------------------------------------------------------------- Method setBarsColorPressed()
@@ -378,9 +396,10 @@ void MenuR::setBarsColorIdle(Color barIdle)
     Sets bars color pressed
 
  -----------------------------------------------------------*/
-void MenuR::setBarsColorPressed(Color barPressed)
+void MenuR::setBarsColorPressed(vector<Color> barsPressed)
 {
-    for (ButtonR &bar : bars) bar.btnPressed = barPressed;
+    for (unsigned i = 0; i < bars.size(); i++) bars[i].btnPressed = barsPressed[i];
+    
 }
 
 // --------------------------------------------------------------------- Method setBarsColorHover()
@@ -389,9 +408,9 @@ void MenuR::setBarsColorPressed(Color barPressed)
     Sets bars color hover
 
  -----------------------------------------------------------*/
-void MenuR::setBarsColorHover(Color barHover)
+void MenuR::setBarsColorHover(vector<Color> barsHover)
 {
-    for (ButtonR &bar : bars) bar.btnHover = barHover;
+    for (unsigned i = 0; i < bars.size(); i++) bars[i].btnHover = barsHover[i];
 }
 
 //--------------------------------------------------------------------- Method setMenuBarsSize()
@@ -430,6 +449,28 @@ void MenuR::setShadowsColor(Color shadowColor)
     for (ButtonR &bar : bars) bar.shadowColor = shadowColor;
 }
 
+// --------------------------------------------------------------------- Method AddToShadowPos()
+/*----------------------------------------------------------
+
+    Adds to shadow position relative to bars
+
+ -----------------------------------------------------------*/
+void MenuR::AddToShadowsPos(float AddToX, float AddToY)
+{
+    for (ButtonR &bar : bars) bar.setShadowPos(bar.shadow.x + AddToX, bar.shadow.y + AddToY);
+}
+
+// --------------------------------------------------------------------- Method AddToShadowSize()
+/*----------------------------------------------------------
+
+    Add to shadow size 
+
+ -----------------------------------------------------------*/
+void MenuR::AddToShadowsSize(float AddToWidth, float AddToHeight)
+{
+    for (ButtonR &bar : bars) bar.setShadowSize(bar.shadow.width + AddToHeight, bar.shadow.height + AddToHeight);
+}
+
 //--------------------------------------------------------------------------------------------------------- Border
 
 //--------------------------------------------------------------------- Method setBorder()
@@ -449,9 +490,9 @@ void MenuR::setBorder(bool isBorder)
     Sets borders color idle
 
  -----------------------------------------------------------*/
-void MenuR::setBordersColorIdle(Color borderIdle)
+void MenuR::setBordersColorIdle(vector<Color> bordersIdle)
 {
-    for (ButtonR &bar : bars) bar.borderIdle = borderIdle;
+    for (unsigned i = 0; i < bars.size(); i++) bars[i]. borderIdle = bordersIdle[i];
 }
 
 // --------------------------------------------------------------------- Method setBordersColorPressed()
@@ -460,9 +501,9 @@ void MenuR::setBordersColorIdle(Color borderIdle)
     Sets borders color pressed
 
  -----------------------------------------------------------*/
-void MenuR::setBordersColorPressed(Color borderPressed)
+void MenuR::setBordersColorPressed(vector<Color> bordersPressed)
 {
-    for (ButtonR &bar : bars) bar.borderPressed = borderPressed;
+    for (unsigned i = 0; i < bars.size(); i++) bars[i].borderPressed = bordersPressed[i];
 }
 
 // --------------------------------------------------------------------- Method setBordersColorHover()
@@ -471,9 +512,9 @@ void MenuR::setBordersColorPressed(Color borderPressed)
     Sets borders color hover
 
  -----------------------------------------------------------*/
-void MenuR::setBordersColorHover(Color borderHover)
+void MenuR::setBordersColorHover(vector<Color> bordersHover)
 {
-    for (ButtonR &bar : bars) bar.borderHover = borderHover;
+    for (unsigned i = 0; i < bars.size(); i++) bars[i].borderHover = bordersHover[i];
 }
 
 // --------------------------------------------------------------------- Method setBordersThickness()
@@ -487,7 +528,24 @@ void MenuR::setBordersThickness(float borderThickness)
     for (ButtonR &bar : bars) bar.borderThickness = borderThickness;
 }
 
-//--------------------------------------------------------------------------------------------------------- Text
+//--------------------------------------------------------------------------------------------------------- Text and font
+
+//--------------------------------------------------------------------- Method setFont()
+/*----------------------------------------------------
+
+    Sets font and
+    Resizes button to fit text
+    isRayFont = false;
+
+ -----------------------------------------------------*/
+void MenuR::setFont(Font font)
+{
+    this->font = font;
+    for (ButtonR &bar : bars) bar.setFont(font);
+    isTxtMod = true;
+    isRayFont = false;
+    buildMenu();
+}
 
 //--------------------------------------------------------------------- Method setFontSize()
 /*----------------------------------------------------
@@ -540,7 +598,6 @@ void MenuR::setTextBar(string text, unsigned barIndex)
     buildMenu();
 }
 
-
 // --------------------------------------------------------------------- Method setTextPosition()
 /*----------------------------------------------------------
 
@@ -553,6 +610,19 @@ void MenuR::setTextBar(string text, unsigned barIndex)
 void MenuR::setTxtPosition(unsigned textsPos)
 {
     this->textsPos = textsPos;
+    isTxtMod = true;
+    buildMenu();
+}
+
+// --------------------------------------------------------------------- Method setFontsColor()
+/*----------------------------------------------------------
+
+    Sets fonts color
+
+ -----------------------------------------------------------*/
+void MenuR::setFontsColor(vector<Color> fontsColor)
+{
+    for (unsigned i = 0; i < bars.size(); i++) bars[i].fontColor = fontsColor[i];
     isTxtMod = true;
     buildMenu();
 }

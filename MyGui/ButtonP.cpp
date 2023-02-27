@@ -272,6 +272,23 @@ int ButtonP::update()
 
 } // update()
 
+//--------------------------------------------------------------------------------------------------------- Text and font
+
+// --------------------------------------------------------------------- Method setFont()
+/*----------------------------------------------------
+
+    Sets font and
+    Resizes button to fit text
+    isRayFont = false;
+
+ -----------------------------------------------------*/
+void ButtonP::setFont(Font font)
+{
+    this->font = font;
+    txtResizeBtn = true;
+    isRayFont = false;
+    buildBtn();
+}
 
 //--------------------------------------------------------------------- Method setFontSize()
 /*----------------------------------------------------
@@ -283,7 +300,6 @@ int ButtonP::update()
  -----------------------------------------------------*/
 void ButtonP::setFontSize(float fontSize) 
 {
-
     this->fontSize = fontSize;
     txtResizeBtn = true;
     buildBtn();
@@ -349,6 +365,8 @@ void ButtonP::setTextPosition(float x, float y)
     buildBtn();
 }
 
+//--------------------------------------------------------------------------------------------------------- Button
+
 //--------------------------------------------------------------------- Method setHoverColor()
 /*----------------------------------------------------
 
@@ -377,12 +395,15 @@ void ButtonP::setPressedColor(Color btnPressedColor)
 /*----------------------------------------------------
 
      Sets the button position in the screen
+     It will reset Text position to the center of the
+     button
 
  -----------------------------------------------------*/
 void ButtonP::setBtnPosition(float btnX, float btnY)
 {
     rect.x = btnX;
     rect.y = btnY;
+    isTxtRepos = false;
     buildBtn();
 }
 
@@ -449,6 +470,7 @@ void ButtonP::buildBtn()
         originalRect.y = 0;
     }
     //--- Centers text in button
+    
     if (!isTxtRepos)
     {
         textPos =
@@ -457,6 +479,7 @@ void ButtonP::buildBtn()
             rect.y + (rect.height - textSize.y) / 2
         };
     }
+    
     // Text position and size
     rectText = { textPos.x, textPos.y, textSize.x, textSize.y },
                // Init original rectangle text
