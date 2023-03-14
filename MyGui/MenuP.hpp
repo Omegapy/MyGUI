@@ -22,6 +22,7 @@
     The bars' shadows can be turned on and off. It is off by default.
     The sizes of the shadows are computed from the font size and length of the bar with the longest text;
     modifying the bars’ sizes will also modify the shadows’ sizes.
+    
     The default font is raylib font.
 
     The menu bars untilize the ButtonP class

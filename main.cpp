@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*-------------------------------*****************************************----------------------------------
  |                                *                                      *                                 |
- |                                *		      My Gui-Button-Menu         *                                 |
+ |                                *		             MyGui               *                                 |
  |                                *                                      *                                 |
  ---------------------------------****************************************----------------------------------*/
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -13,14 +13,15 @@
 Alejandro (Alex) Ricciardi
 created date: 02/8/2023
 
-
+                                                   MyGui
                                             My Gui-Button-Menu 
 
 
-This project is my My Gui-Button-Menu in c++ with the raylib library.
+MyGui a C++ program using the raylib library which features buttons and a menu for graphical user interface (GUI). 
+Named MyGui, the program offers a wide range of functions while keeping the coding process simple.
 
 Requirement
-c and c++ 20 or later
+c and c++ 17 or later
 Raylib library: https://www.raylib.com
 
 ****** Please see the README.txt file for more information about this project **********
@@ -138,7 +139,7 @@ Raylib library: https://www.raylib.com
 
     The default font is raylib font.
 
-    The menu bars untilize the ButtonR class
+    The menu bars untilize the ButtonR class.
 
     ------------------------------------------------------------------------------------------------------------
 
@@ -165,7 +166,7 @@ Raylib library: https://www.raylib.com
 
     The default font is raylib font.
 
-    The menu bars untilize the ButtonO class
+    The menu bars untilize the ButtonO class.
 
     ------------------------------------------------------------------------------------------------------------
 
@@ -183,7 +184,10 @@ Raylib library: https://www.raylib.com
     The bars' shadows can be turned on and off. It is off by default.
     The sizes of the shadows are computed from the font size and length of the bar with the longest text;
     modifying the bars’ sizes will also modify the shadows’ sizes.
+    
     The default font is raylib font.
+
+    The menu bars untilize the ButtonP class.
 
     ------------------------------------------------------------------------------------------------------------
 

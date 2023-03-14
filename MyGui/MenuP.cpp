@@ -22,7 +22,7 @@
 
     The default font is raylib font.
 
-    The menu bars untilize the ButtonP class
+    The menu bars untilize the ButtonP class.
 
 */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -198,16 +198,11 @@ MenuP::~MenuP()
 {
     for (ButtonP &bar : bars)
     {
-        //----------------------------------------------------------------------------------
+        //------------------------------------------------------------
 
-        // De-Initialization Textures
-        //----------------------------------------------------------------------------------
-        UnloadTexture(bar.btnIdle);
-        UnloadTexture(bar.btnHover);
-        UnloadTexture(bar.btnPressed);
-        UnloadTexture(bar.textIdle);
-        UnloadTexture(bar.textHover);
-        UnloadTexture(bar.textPressed);
+        // De-Initialization Bars's 
+        //------------------------------------------------------------
+        delete &bar;
     }
 }
 
