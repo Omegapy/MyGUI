@@ -127,6 +127,17 @@ public:
     int windowHeight = GetScreenHeight();
     Vector2 windowScale = { (float)GetScreenWidth() / windowWidth, (float)GetScreenHeight() / windowHeight };
 
+    //---- Shaddow
+   /*
+       The shadow size is computed from the font size andlength of the text
+       modifying the button's size, we also modify the shadow's size.
+       See mutators for modifying specifically the shadow's size and position.
+   */
+    double shadowOffset = 0.05;
+    Rectangle shadow{ rect.x + 5,  rect.y + 5, btnWidth, btnHeight };
+    Color shadowColor = GRAY;
+    bool isShadow = false;
+
 
     //----------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------
@@ -317,6 +328,22 @@ public:
 
      -----------------------------------------------------*/
     void setBtnSize(float btnWidth, float btnHeight);
+
+    //---------------------------------------------------------------------------------- Shadow
+
+    /*----------------------------------------------------
+
+        Sets shadow position
+
+     -----------------------------------------------------*/
+    void setShadowPos(float x, float y);
+
+    /*----------------------------------------------------
+
+        Sets shadow size.
+
+     -----------------------------------------------------*/
+    void setShadowSize(float width, float height);
 
 private:
 

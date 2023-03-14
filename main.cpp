@@ -289,19 +289,20 @@ int main()
     //btnP2.setFontSize(24);
     //btnP2.setFontSizeNoResize(34);
     //btnP2.fontColor = BLACK;
+    //btnP2.isShadow = true;
     ButtonP btnP3("Button", 750, 325, "resources/images/button1.png", font2);
 
 
     vector<string> menuTxt = { "START", "RESUME", "NEXT", "ABOUT", "EXIT" };
 
-    MenuR menuDefaultR;
+    //MenuR menuDefaultR;
     //menuDefaultR.setFont(font1);
     //menuDefaultR.setBarSpacing(25.0f);
     //MenuR menuR1(menuTxt);
     //MenuR menuR2(menuTxt, CENTER);
     //MenuR menuR3(menuTxt, CENTER, TXT_RIGHT);
     //MenuR menuR4(menuTxt, CENTER, font2, 32);
-    MenuR menuR5(menuTxt, CENTER, TXT_CENTER, font1, 32);
+    //MenuR menuR5(menuTxt, CENTER, TXT_CENTER, font1, 32);
     //-- Shadow
     //menuR5.setShadow(false);
     //menuR5.setShadowsColor(GREEN);
@@ -330,7 +331,7 @@ int main()
     //MenuO menuO2(menuTxt, CENTER);
     //MenuO menuO3(menuTxt, CENTER, TXT_RIGHT);
     //MenuO menuO4(menuTxt, CENTER, font2, 32);
-    MenuO menuO5(menuTxt, CENTER, TXT_CENTER, font1, 32);
+    //MenuO menuO5(menuTxt, CENTER, TXT_CENTER, font1, 32);
     
 
     //MenuP menuDefaultP;
@@ -378,7 +379,7 @@ int main()
             //menuR2.draw();
             //menuR3.draw();
             //menuR4.draw();
-            menuR5.draw();
+            //menuR5.draw();
             //---------------------- Round Menu
             //menuDefaultO.draw();
             //menuO1.draw();

@@ -187,6 +187,7 @@ ButtonP::~ButtonP()
 void ButtonP::draw()
 {
    update();
+   if (isShadow) DrawRectangleRec(shadow, shadowColor);
    DrawTexturePro( *btnLive, originalRect, rect, { 0, 0 }, 0.0f, WHITE);
    DrawTexturePro( *textLive, originalRectText, rectText, { 0, 0 }, 0.0f, fontColor);
 }
@@ -422,6 +423,30 @@ void ButtonP::setBtnSize(float btnWidth, float btnHeight)
     buildBtn();
 }
 
+//--------------------------------------------------------------------------------------------------------- Shadow
+
+//--------------------------------------------------------------------- Method setShadowPos()
+/*----------------------------------------------------
+
+    Sets shadow position.
+
+ -----------------------------------------------------*/
+void ButtonP::setShadowPos(float x, float y)
+{
+    shadow = { x, y, shadow.width, shadow.height };
+}
+
+//--------------------------------------------------------------------- Method setShadowSize()
+/*----------------------------------------------------
+
+    Sets shadow size.
+
+ -----------------------------------------------------*/
+void ButtonP::setShadowSize(float width, float height)
+{
+    shadow = { shadow.x, shadow.y, width, height };
+}
+
 //----------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------
 
@@ -530,6 +555,9 @@ void ButtonP::buildBtn()
     // Update button texture
     textPressed = LoadTextureFromImage(textImg);
     UpdateTexture(textPressed, pixels);
+
+    //---- Button shadow
+    shadow = { rect.x + 5,  rect.y + 5, rect.width, rect.height };
 
     //--------------------------------------------------------------------------------------
 

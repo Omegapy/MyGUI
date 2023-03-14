@@ -496,3 +496,6 @@ void MenuP::setTxtPosition(unsigned textsPos)
     isTxtMod = true;
     buildMenu();
 }
+
+
+
