@@ -105,6 +105,11 @@ Raylib library: https://www.raylib.com
     the text is automatically centered on the button.
     See mutators to modify the button’s position, the text’s position in the button, and the button’s size.
 
+    The button's shadows can be turned on and off. It is off by default.
+    The sizes of the shadows are computed from the font size and length of the bar with the longest text;
+    modifying the bars’ sizes will also modify the shadows’ sizes.
+    The default font is raylib font.
+
     The default font is raylib font.
 
     ------------------------------------------------------------------------------------------------------------
@@ -112,19 +117,24 @@ Raylib library: https://www.raylib.com
 
     -- MenuR --
 
-    The ButtonR class creates a rectangle-shaped static-size button, window-resized-not-responsive button.
+    The MenuR class creates static-size menu objects,
+    window-resized-not-responsive menus.
+    The MenuR objects consist of rectangle shaped bars.
 
-    The button size is computed from the font size and length of the text;
-    the text is automatically centered on the button.
-    See mutators to modify the button’s position, the text’s position in the button, and the button’s size.
+    The menu object can contain one menu bar or several menu bars,
+    the menu can be automatically positioned on the left, center, or right side of the screen.
+    See mutators to modify the menu position.
 
-    The button's border can be turned on and off.
-    the border's size is computed from the font size and length of the text;
-    modifying the button's size will also modify the border's size.
+    The bars’ sizes are computed from the font size and length of the bar with the longest text;
+    the texts can be positioned on the left, center, or right side of the bars.
 
-    The button's shadow can be turned on and off.
-    The shadow size is computed from the font size and length of the text;
-    modifying the button's size will also modify the shadow's size.
+    The bars’ borders can be turned on and off.
+    The sizes of the borders are computed from the font size and length of the bar with the longest text;
+    modifying the bars’ sizes will also modify the borders’ sizes.
+
+    The bars' shadows can be turned on and off.
+    The sizes of the shadows are computed from the font size and length of the bar with the longest text;
+    modifying the bars’ sizes will also modify the shadows’ sizes.
 
     The default font is raylib font.
 
@@ -149,13 +159,31 @@ Raylib library: https://www.raylib.com
     The sizes of the borders are computed from the font size and length of the bar with the longest text;
     modifying the bars’ sizes will also modify the borders’ sizes.
 
-    The button's shadows can be turned on and off.
+    The bars' shadows can be turned on and off.
     The sizes of the shadows are computed from the font size and length of the bar with the longest text;
     modifying the bars’ sizes will also modify the shadows’ sizes.
 
     The default font is raylib font.
 
     The menu bars untilize the ButtonO class
+
+    ------------------------------------------------------------------------------------------------------------
+
+    --- MenuP ---
+
+    The MenuP class creates responsive menu objects, from images.
+
+    The menu object can contain one menu bar or several menu bars,
+    the menu can be automatically positioned on the left, center, or right side of the screen.
+    See mutators to modify the menu position.
+
+    The bars’ sizes are computed from the font size and length of the bar with the longest text;
+    the texts can be positioned on the left, center, or right side of the bars.
+
+    The bars' shadows can be turned on and off. It is off by default.
+    The sizes of the shadows are computed from the font size and length of the bar with the longest text;
+    modifying the bars’ sizes will also modify the shadows’ sizes.
+    The default font is raylib font.
 
     ------------------------------------------------------------------------------------------------------------
 
@@ -368,13 +396,13 @@ int main()
     //menuP6.setBarsColorPressed({ RED, RED, RED, RED, RED });
     //menuP6.setBarsColorHover({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN } );
     //--- Text and font
-    menuP6.setFontSize(58);
-    menuP6.setBarSpacing(100);
+    //menuP6.setFontSize(58);
+    //menuP6.setBarSpacing(100);
     //menuP6.setFontSizeNoResize(34);
     //menuP6.setTextBar("----------------------Mod.Text Bar------------------", 3);
     //menuP6.setTextBar("Mod.Text Bar", 3);
     //menuP6.setTxtPosition(TXT_LEFT);
-    menuP6.setFontsColor({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN });
+    //menuP6.setFontsColor({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN });
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key

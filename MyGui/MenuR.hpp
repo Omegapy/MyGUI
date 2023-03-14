@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 
-    The MenuR class creates static-size menu objects,
+   The MenuR class creates static-size menu objects,
     window-resized-not-responsive menus.
     The MenuR objects consist of rectangle shaped bars.
 
@@ -25,7 +25,7 @@
     The sizes of the borders are computed from the font size and length of the bar with the longest text;
     modifying the bars’ sizes will also modify the borders’ sizes.
 
-    The button's shadows can be turned on and off.
+    The bars' shadows can be turned on and off.
     The sizes of the shadows are computed from the font size and length of the bar with the longest text;
     modifying the bars’ sizes will also modify the shadows’ sizes.
 

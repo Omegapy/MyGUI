@@ -9,9 +9,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
-*
-    The MenuP class creates responsive menu objects, from an image.
-    (The button resizes with the window).
+    
+    The MenuP class creates responsive menu objects, from images.
 
     The menu object can contain one menu bar or several menu bars,
     the menu can be automatically positioned on the left, center, or right side of the screen.
@@ -20,6 +19,9 @@
     The bars’ sizes are computed from the font size and length of the bar with the longest text;
     the texts can be positioned on the left, center, or right side of the bars.
 
+    The bars' shadows can be turned on and off. It is off by default.
+    The sizes of the shadows are computed from the font size and length of the bar with the longest text;
+    modifying the bars’ sizes will also modify the shadows’ sizes.
     The default font is raylib font.
 
     The menu bars untilize the ButtonP class
@@ -27,7 +29,7 @@
     Requirement
     c and c++ 20 or later
     Raylib library: https://www.raylib.com
-    ButtonO Class
+    ButtonP Class
 
 */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
