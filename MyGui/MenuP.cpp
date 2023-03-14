@@ -354,7 +354,7 @@ void MenuP::buildMenu()
             switch (textsPos)
             {
             case TXT_CENTER:
-                // The ButtonO class centers the texts by default
+                // The ButtonP class centers the texts by default
                 break;
             case TXT_LEFT:
                 bar.setTextPosition(bar.rect.x + txtMargine, bar.textPos.y);
@@ -372,7 +372,7 @@ void MenuP::buildMenu()
 
 } // buildMenu()
 
-//--------------------------------------------------------------------------------------------------------- Menu bars
+//--------------------------------------------------------------------------------------------------------- Menu 
 
 // --------------------------------------------------------------------- Method setMenuPosition()
 /*----------------------------------------------------------
@@ -390,29 +390,40 @@ void MenuP::setMenuPosition(unsigned menuPos)
     this->menuPos = menuPos;
 }
 
+/*----------------------------------------------------------
 
-// --------------------------------------------------------------------- Method setBarsColorPressed()
+    Sets Bar spacing
+
+ -----------------------------------------------------------*/
+void MenuP::setBarSpacing(float barSpacing)
+{
+    this->barSpacing = barSpacing;
+    buildMenu();
+}
+
+//--------------------------------------------------------------------------------------------------------- Bars
+
+// -------------------------------------------------------------------- - Method setBarsColorPressed()
 /*----------------------------------------------------------
 
     Sets bars color pressed
 
  -----------------------------------------------------------*/
-void MenuP::setBarsColorPressed(Color barPressed)
+    void MenuP::setBarsColorPressed(vector<Color> barsPressed)
 {
-    for (ButtonP &bar : bars) bar.setPressedColor(barPressed);
+    for (unsigned i = 0; i < bars.size(); i++) bars[i].setPressedColor(barsPressed[i]);
 }
 
-//--------------------------------------------------------------------- Method setBarsColorHover()
-/*----------------------------------------------------
+// --------------------------------------------------------------------- Method setBarsColorHover()
+/*----------------------------------------------------------
 
-     Sets the hover color for bars
+    Sets bars color hover
 
- -----------------------------------------------------*/
-void MenuP::setBarsColorHover(Color barHoverColor)
+ -----------------------------------------------------------*/
+void MenuP::setBarsColorHover(vector<Color> barsHover)
 {
-    for (ButtonP &bar : bars) bar.setHoverColor(barHoverColor);
+    for (unsigned i = 0; i < bars.size(); i++) bars[i].setHoverColor(barsHover[i]);
 }
-
 
 //--------------------------------------------------------------------- Method setMenuBarsSize()
 /*----------------------------------------------------
@@ -424,10 +435,74 @@ void MenuP::setBarsColorHover(Color barHoverColor)
 void MenuP::setBarsSize(float barWidth, float barHeight)
 {
     for (ButtonP &bar : bars) bar.setBtnSize(barWidth, barHeight);
+    isTxtMod = true;
+    buildMenu();
 }
 
+//--------------------------------------------------------------------------------------------------------- Shadow
 
-//--------------------------------------------------------------------------------------------------------- Text
+//--------------------------------------------------------------------- Method setShadow()
+/*----------------------------------------------------------
+
+    Sets shadow true or false
+
+ -----------------------------------------------------------*/
+void MenuP::setShadow(bool isShadow)
+{
+    for (ButtonP &bar : bars) bar.isShadow = isShadow;
+}
+
+// --------------------------------------------------------------------- Method setShadowColor()
+/*----------------------------------------------------------
+
+    Sets shadow color
+
+ -----------------------------------------------------------*/
+void MenuP::setShadowsColor(Color shadowColor)
+{
+    for (ButtonP &bar : bars) bar.shadowColor = shadowColor;
+}
+
+// --------------------------------------------------------------------- Method AddToShadowPos()
+/*----------------------------------------------------------
+
+    Adds to shadow position relative to bars
+
+ -----------------------------------------------------------*/
+void MenuP::AddToShadowsPos(float AddToX, float AddToY)
+{
+    for (ButtonP &bar : bars) bar.setShadowPos(bar.shadow.x + AddToX, bar.shadow.y + AddToY);
+}
+
+// --------------------------------------------------------------------- Method AddToShadowSize()
+/*----------------------------------------------------------
+
+    Add to shadow size
+
+ -----------------------------------------------------------*/
+void MenuP::AddToShadowsSize(float AddToWidth, float AddToHeight)
+{
+    for (ButtonP &bar : bars) bar.setShadowSize(bar.shadow.width + AddToHeight, bar.shadow.height + AddToHeight);
+}
+
+//--------------------------------------------------------------------------------------------------------- Text and font
+
+//--------------------------------------------------------------------- Method setFont()
+/*----------------------------------------------------
+
+    Sets font and
+    Resizes button to fit text
+    isRayFont = false;
+
+ -----------------------------------------------------*/
+void MenuP::setFont(Font font)
+{
+    this->font = font;
+    for (ButtonP &bar : bars) bar.setFont(font);
+    isTxtMod = true;
+    isRayFont = false;
+    buildMenu();
+}
 
 //--------------------------------------------------------------------- Method setFontSize()
 /*----------------------------------------------------
@@ -498,4 +573,15 @@ void MenuP::setTxtPosition(unsigned textsPos)
 }
 
 
+// --------------------------------------------------------------------- Method setFontsColor()
+/*----------------------------------------------------------
 
+    Sets fonts color
+
+ -----------------------------------------------------------*/
+void MenuP::setFontsColor(vector<Color> fontsColor)
+{
+    for (unsigned i = 0; i < bars.size(); i++) bars[i].fontColor = fontsColor[i];
+    isTxtMod = true;
+    buildMenu();
+}

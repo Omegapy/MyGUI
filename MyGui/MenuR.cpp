@@ -399,7 +399,6 @@ void MenuR::setBarsColorIdle(vector<Color> barsIdle)
 void MenuR::setBarsColorPressed(vector<Color> barsPressed)
 {
     for (unsigned i = 0; i < bars.size(); i++) bars[i].btnPressed = barsPressed[i];
-    
 }
 
 // --------------------------------------------------------------------- Method setBarsColorHover()
@@ -423,6 +422,8 @@ void MenuR::setBarsColorHover(vector<Color> barsHover)
 void MenuR::setBarsSize(float barWidth, float barHeight)
 {
     for (ButtonR &bar : bars) bar.setBtnSize(barWidth, barHeight);
+    isTxtMod = true;
+    buildMenu();
 }
 
 //--------------------------------------------------------------------------------------------------------- Shadow

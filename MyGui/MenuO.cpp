@@ -424,6 +424,8 @@ void MenuO::setbBarsRoundness(float roundness)
 void MenuO::setBarsSize(float barWidth, float barHeight)
 {
     for (ButtonO &bar : bars) bar.setBtnSize(barWidth, barHeight);
+    isTxtMod = true;
+    buildMenu();
 }
 
 //--------------------------------------------------------------------------------------------------------- Shadow

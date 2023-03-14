@@ -238,6 +238,12 @@ int main()
     Font font1 = LoadFont("resources/fonts/monofonto.otf");
     Font font2 = LoadFont("resources/fonts/segoeui.ttf");
 
+
+    //--------------------------------------------------------------------------------------
+
+    // Buttons
+    //--------------------------------------------------------------------------------------
+    // 
     //---------------------- Rectangle buttons
     //ButtonR btnR1;
     //-- Shadow
@@ -293,8 +299,16 @@ int main()
     ButtonP btnP3("Button", 750, 325, "resources/images/button1.png", font2);
 
 
-    vector<string> menuTxt = { "START", "RESUME", "NEXT", "ABOUT", "EXIT" };
+    //--------------------------------------------------------------------------------------
 
+    // Menus
+    //--------------------------------------------------------------------------------------
+    // 
+
+    vector<string> menuTxt = { "START", "RESUME", "NEXT", "ABOUT", "EXIT" };
+    vector<string> imgPaths = { "resources/images/bar1.png", "resources/images/bar2.png", "resources/images/bar3.png", "resources/images/bar4.png", "resources/images/bar5.png" };
+
+    //----------------------  Menu Rectangle Bars
     //MenuR menuDefaultR;
     //menuDefaultR.setFont(font1);
     //menuDefaultR.setBarSpacing(25.0f);
@@ -302,7 +316,8 @@ int main()
     //MenuR menuR2(menuTxt, CENTER);
     //MenuR menuR3(menuTxt, CENTER, TXT_RIGHT);
     //MenuR menuR4(menuTxt, CENTER, font2, 32);
-    //MenuR menuR5(menuTxt, CENTER, TXT_CENTER, font1, 32);
+    MenuR menuR5(menuTxt, CENTER, TXT_LEFT, font1, 24);
+    //menuR5.setBarsSize(300, 55);
     //-- Shadow
     //menuR5.setShadow(false);
     //menuR5.setShadowsColor(GREEN);
@@ -313,19 +328,21 @@ int main()
     //menuR5.setBordersColorIdle({ GREEN, DARKGREEN, YELLOW, DARKBLUE, BLUE });
     //menuR5.setBordersColorPressed({ RED, RED, RED, RED, RED });
     //menuR5.setBordersColorHover({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN } );
-    //menu5.setBorder(false);
-    //--- Button
+    //menuR5.setBorder(false);
+    //--- Bar
     //menuR5.setBarsColorIdle({ GREEN, DARKGREEN, YELLOW, DARKBLUE, BLUE });
     //menuR5.setBarsColorPressed({ RED, RED, RED, RED, RED });
     //menuR5.setBarsColorHover({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN } );
     //--- Text and font
     //menuR5.setFontSize(58);
+    //menuR5.setBarSpacing(100);
     //menuR5.setFontSizeNoResize(24);
     //menuR5.setTextBar("----------------------Mod.Text Bar------------------", 3);
     //menuR5.setTextBar("Mod.Text Bar", 3);
     //menuR5.setTxtPosition(TXT_LEFT);
     //menuR5.setFontsColor({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN });
 
+    //----------------------  Menu Reounded Bars
     //MenuO menuDefaultO;
     //MenuO menuO1(menuTxt);
     //MenuO menuO2(menuTxt, CENTER);
@@ -333,13 +350,31 @@ int main()
     //MenuO menuO4(menuTxt, CENTER, font2, 32);
     //MenuO menuO5(menuTxt, CENTER, TXT_CENTER, font1, 32);
     
-
+    //----------------------  Menu Image Bars
     //MenuP menuDefaultP;
-    //MenuP menuP1(menuTxt);
-    //MenuP menuP2(menuTxt, CENTER);
-    //MenuP menuP3(menuTxt, CENTER, TXT_RIGHT);
-    //MenuP menuP4(menuTxt, CENTER, font2, 32);
-
+    //MenuP menuP1(menuTxt, imgPaths);
+    //MenuP menuP2(menuTxt, CENTER, imgPaths);
+    //MenuP menuP3(menuTxt, CENTER, TXT_CENTER, imgPaths);
+    //MenuP menuP4(menuTxt, font1, 24, imgPaths);
+    //MenuP menuP5(menuTxt, CENTER, TXT_CENTER, font1, 24, imgPaths);
+    MenuP menuP6(menuTxt, CENTER, TXT_LEFT, font1, 24, imgPaths);
+    menuP6.setBarsSize(250, 65);
+    //-- Shadow
+    //menuP6.setShadow(true);
+    //menuP6.setShadowsColor(GREEN);
+    //menuP6.AddToShadowsPos(5, 5);
+    //menuP6.AddToShadowsSize(5, 5);
+    //--- Bar
+    //menuP6.setBarsColorPressed({ RED, RED, RED, RED, RED });
+    //menuP6.setBarsColorHover({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN } );
+    //--- Text and font
+    menuP6.setFontSize(58);
+    menuP6.setBarSpacing(100);
+    //menuP6.setFontSizeNoResize(34);
+    //menuP6.setTextBar("----------------------Mod.Text Bar------------------", 3);
+    //menuP6.setTextBar("Mod.Text Bar", 3);
+    //menuP6.setTxtPosition(TXT_LEFT);
+    menuP6.setFontsColor({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN });
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -394,7 +429,7 @@ int main()
             //menuP3.draw();
             //menuP4.draw();
             //menuP5.draw();
-
+            menuP6.draw();
 
         EndDrawing();
 

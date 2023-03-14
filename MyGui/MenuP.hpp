@@ -85,7 +85,7 @@ public:
     vector<string> texts;
     // Texts postion in bars
     unsigned textsPos = TXT_LEFT;
-    float txtMargine = 13; // text margine left and right 
+    float txtMargine = 25; // text margine left and right 
     // font
     Font font;
     float fontSize = 0.0f;
@@ -224,7 +224,7 @@ public:
     -----------------------------------------------------------*/
     void buildMenu();
 
-    //---------------------------------------------------------------------------------- Menu bars
+    //---------------------------------------------------------------------------------- Menu 
 
     /*----------------------------------------------------------
 
@@ -238,19 +238,27 @@ public:
      -----------------------------------------------------------*/
     void setMenuPosition(unsigned menuPos);
 
+
+    /*----------------------------------------------------------
+
+        Sets Bar spacing
+
+     -----------------------------------------------------------*/
+    void setBarSpacing(float barSpacing);
+
     /*----------------------------------------------------------
 
         Sets bars color pressed
 
      -----------------------------------------------------------*/
-    void setBarsColorPressed(Color barPressed);
+    void setBarsColorPressed(vector<Color> barsPressed);
 
     /*----------------------------------------------------------
 
         Sets bars color hover
 
      -----------------------------------------------------------*/
-    void setBarsColorHover(Color barsHover);
+    void setBarsColorHover(vector<Color> barsHover);
 
     /*----------------------------------------------------
 
@@ -260,15 +268,47 @@ public:
      -----------------------------------------------------*/
     void setBarsSize(float barWidth, float barHeight);
 
+    //---------------------------------------------------------------------------------- Shadow
+
+    /*----------------------------------------------------------
+
+        Sets shadow true or false
+
+     -----------------------------------------------------------*/
+    void setShadow(bool isShadow);
+
     /*----------------------------------------------------------
 
         Sets shadow color
 
      -----------------------------------------------------------*/
-    void setbBarsRoundness(float roundness);
+    void setShadowsColor(Color shadowColor);
+
+    /*----------------------------------------------------------
+
+        Adds to shadow position relative to bars
+
+     -----------------------------------------------------------*/
+    void AddToShadowsPos(float AddToX, float AddToY);
+
+    /*----------------------------------------------------------
+
+      Add to shadow size
+
+    -----------------------------------------------------------*/
+    void AddToShadowsSize(float AddToWidth, float AddToHeight);
 
 
-    //---------------------------------------------------------------------------------- Text
+    //---------------------------------------------------------------------------------- Text and Font
+
+    /*----------------------------------------------------
+
+        Sets font and
+        Resizes button to fit text
+        isRayFont = false;
+
+     -----------------------------------------------------*/
+    void setFont(Font font);
 
     /*----------------------------------------------------
 
@@ -307,6 +347,13 @@ public:
 
      -----------------------------------------------------------*/
     void setTxtPosition(unsigned textsPos);
+
+    /*----------------------------------------------------------
+
+        Sets fonts color
+
+     -----------------------------------------------------------*/
+    void setFontsColor(vector<Color> fontsColor);
 
 
 private:
