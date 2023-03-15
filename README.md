@@ -28,7 +28,7 @@ Project description:
 The project contains My Gui-Button-Menu classes in c++ and the raylib library.
 
 <p align="center">
- <img width="150" height="75"src="https://user-images.githubusercontent.com/121726699/215300372-34bd2249-3a93-49cf-a213-71ddeb2f0a62.png">
+ <img width="443" height="519"src="https://user-images.githubusercontent.com/121726699/225176364-845df742-e397-4d19-8815-b6afbe207293.PNG">
 </p>
 
 -----------------------------------------------------------------------------------------------------------------------------
