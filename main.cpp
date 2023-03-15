@@ -139,7 +139,7 @@ Raylib library: https://www.raylib.com
 
     The default font is raylib font.
 
-    The menu bars untilize the ButtonR class.
+    The menu bars utilize the ButtonR class.
 
     ------------------------------------------------------------------------------------------------------------
 
@@ -166,7 +166,7 @@ Raylib library: https://www.raylib.com
 
     The default font is raylib font.
 
-    The menu bars untilize the ButtonO class.
+    The menu bars utilize the ButtonO class.
 
     ------------------------------------------------------------------------------------------------------------
 
@@ -187,7 +187,7 @@ Raylib library: https://www.raylib.com
     
     The default font is raylib font.
 
-    The menu bars untilize the ButtonP class.
+    The menu bars utilize the ButtonP class.
 
     ------------------------------------------------------------------------------------------------------------
 
@@ -277,7 +277,7 @@ int main()
     //--------------------------------------------------------------------------------------
     // 
     //---------------------- Rectangle buttons
-    //ButtonR btnR1;
+    ButtonR btnR1;
     //-- Shadow
     //btnR1.isShadow = false;
     //btnR1.shadowColor = GREEN;
@@ -349,7 +349,7 @@ int main()
     //MenuR menuR3(menuTxt, CENTER, TXT_RIGHT);
     //MenuR menuR4(menuTxt, CENTER, font2, 32);
     MenuR menuR5(menuTxt, CENTER, TXT_LEFT, font1, 24);
-    //menuR5.setBarsSize(300, 55);
+    menuR5.setBarsSize(300, 55);
     //-- Shadow
     //menuR5.setShadow(false);
     //menuR5.setShadowsColor(GREEN);
@@ -380,8 +380,9 @@ int main()
     //MenuO menuO2(menuTxt, CENTER);
     //MenuO menuO3(menuTxt, CENTER, TXT_RIGHT);
     //MenuO menuO4(menuTxt, CENTER, font2, 32);
-    //MenuO menuO5(menuTxt, CENTER, TXT_CENTER, font1, 32);
-    
+    MenuO menuO5(menuTxt, CENTER, TXT_CENTER, font1, 32);
+    menuO5.setBarsSize(300, 55);
+
     //----------------------  Menu Image Bars
     //MenuP menuDefaultP;
     //MenuP menuP1(menuTxt, imgPaths);
@@ -389,7 +390,7 @@ int main()
     //MenuP menuP3(menuTxt, CENTER, TXT_CENTER, imgPaths);
     //MenuP menuP4(menuTxt, font1, 24, imgPaths);
     //MenuP menuP5(menuTxt, CENTER, TXT_CENTER, font1, 24, imgPaths);
-    MenuP menuP6(menuTxt, CENTER, TXT_LEFT, font1, 24, imgPaths);
+    MenuP menuP6(menuTxt, CENTER, TXT_CENTER, font1, 24, imgPaths);
     menuP6.setBarsSize(250, 65);
     //-- Shadow
     //menuP6.setShadow(true);
@@ -406,7 +407,7 @@ int main()
     //menuP6.setTextBar("----------------------Mod.Text Bar------------------", 3);
     //menuP6.setTextBar("Mod.Text Bar", 3);
     //menuP6.setTxtPosition(TXT_LEFT);
-    //menuP6.setFontsColor({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN });
+    menuP6.setFontsColor({ LIGHTGRAY, DARKGRAY, WHITE, DARKGREEN, DARKBROWN });
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key

@@ -31,7 +31,7 @@
 
     The default font is raylib font.
 
-    The menu bars untilize the ButtonO class.
+    The menu bars utilize the ButtonO class.
 
     Requirement
     c and c++ 20 or later
@@ -363,7 +363,7 @@ public:
 
     /*----------------------------------------------------------
 
-        Sets texts possition
+        Sets texts position
 
         texts position:
         TXT_CENTER, TXT_LEFT, TXT_RIGHT

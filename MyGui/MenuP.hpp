@@ -25,7 +25,7 @@
     
     The default font is raylib font.
 
-    The menu bars untilize the ButtonP class
+    The menu bars utilize the ButtonP class
 
     Requirement
     c and c++ 20 or later

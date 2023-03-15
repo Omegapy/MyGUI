@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 
-   The MenuR class creates static-size menu objects,
+    The MenuR class creates static-size menu objects,
     window-resized-not-responsive menus.
     The MenuR objects consist of rectangle shaped bars.
 
@@ -31,7 +31,7 @@
 
     The default font is raylib font.
 
-    The menu bars untilize the ButtonR class.
+    The menu bars utilize the ButtonR class.
 
     Requirement
     c and c++ 20 or later

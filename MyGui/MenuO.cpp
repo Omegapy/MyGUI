@@ -31,7 +31,7 @@
 
     The default font is raylib font.
     
-    The menu bars untilize the ButtonO class
+    The menu bars utilize the ButtonO class
 
 
 */
