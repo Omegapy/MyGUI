@@ -467,6 +467,49 @@ int main()
         EndDrawing();
 
         //----------------------------------------------------------------------------------
+
+        // Update buttons
+        //----------------------------------------------------------------------------------
+
+        switch (btnR1.update())
+        {
+        case MOUSE_BUTTON_LEFT:
+            cout << "\n---- The mouse left button was pressed, exit program ----\n";
+            exit(0); // exists program
+            break;
+        case MOUSE_BUTTON_RIGHT:
+            cout << "\n---- The mouse right button was pressed, exit program  ----\n";
+            exit(0); // exists program
+            break;
+        case MOUSE_BUTTON_MIDDLE:
+            cout << "\n---- The mouse right button was pressed, exit program  ----\n";
+            break;
+        default:
+            break;
+        }
+
+        //----------------------------------------------------------------------------------
+
+        // Update menus
+        //----------------------------------------------------------------------------------
+ 
+        switch (menuP6.bars[4].update())
+        {
+        case MOUSE_BUTTON_LEFT:
+            cout << "\n---- The menu bar mouse left button was pressed, exit program  ----\n";
+            exit(0); // exists program
+            break;
+        case MOUSE_BUTTON_RIGHT:
+            cout << "\n---- The menu bar mouse right button was pressed, exit program  ----\n";
+            exit(0); // exists program
+            break;
+        case MOUSE_BUTTON_MIDDLE:
+            cout << "\n---- The menu bar mouse right button was pressed, exit program  ----\n";
+            exit(0); // exists program
+            break;
+        default:
+            break;
+        }
     }
 
     //--------------------------------------------------------------------------------------

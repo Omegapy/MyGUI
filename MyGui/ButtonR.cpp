@@ -264,7 +264,7 @@ ButtonR::ButtonR(string text, Font &font, float fontSize)
     Draws button
 
  -----------------------------------------------------*/
-void ButtonR::draw()
+void  ButtonR::draw()
 {
     update();
 
