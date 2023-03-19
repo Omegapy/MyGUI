@@ -2,8 +2,9 @@
 MyGui     Gui-Button-Menu 
 -----------------------------------------------------------------------------------------------------------------------------
 
-MyGui a c++ program using the raylib library which features buttons and menu-bars for graphical user interface (GUI). 
-Named MyGui, the program offers a wide range of functions while keeping the coding process simple.
+MyGui is a c++ collection of classes that utilizes the raylib library; 
+the classes feature buttons and menu-bars for graphical user interface (GUI).
+MyGui offers a diverse set of methods that simplify and streamline the coding of buttons and menus.
 
 Alejandro (Alex) Ricciardi  
 created date: 02/08/2023  
