@@ -17,8 +17,9 @@ created date: 02/8/2023
                                             My Gui-Button-Menu 
 
 
-MyGui a c++ program using the raylib library which features buttons and menu-bars for graphical user interface (GUI). 
-Named MyGui, the program offers a wide range of functions while keeping the coding process simple.
+MyGui is a c++ collection of classes that utilizes the raylib library; 
+the classes feature buttons and menu-bars for graphical user interface (GUI).
+MyGui offers a diverse set of methods that simplify and streamline the coding of buttons and menus.
 
 Requirement
 c and c++ 17 or later
@@ -290,16 +291,16 @@ int main()
     //btnR1.setBtnPosition(btnR1.rect.x + 25, btnR1.rect.y + 25);
     //-- Border
     //btnR1.isBorder = false;
-    //btnR1.borderIdle = PURPLE; // border idle
-    //btnR1.borderHover = YELLOW; // border Hover
-    //btnR1.borderPressed = GREEN; // border Pressed
+    //btnR1.borderIdle = YELLOW; // border idle
+    //btnR1.borderHover = PURPLE; // border Hover
+    //btnR1.borderPressed = WHITE; // border Pressed
     //btnR1.borderThickness = 6;
     //-- Text and font
     //btnR1.setFont(font1);
     //btnR1.setText("Continue");
     //btnR1.setTextNoResize("up");
-    //btnR1.setTextPosition(btnR1.rect.x + 10, btnR1.rect.y + 10);
-    //btnR1.setFontSize(24);
+    //btnR1.setTextPosition(btnR1.rect.x + 10, btnR1.rect.y + 5);
+    //btnR1.setFontSize(56);
     //btnR1.setFontSizeNoResize(34);
     //btnR1.fontColor = GRAY;
 
@@ -308,15 +309,15 @@ int main()
 
     //----------------------  Rounded rectangle buttons
     ButtonO btnO1("Button", 450, 100);
-    //btnO1.roundness = 1.0f;
+    btnO1.roundness = 1.0f;
     ButtonO btnO2("Button", 450, 225, font1);
     ButtonO btnO3("Button", 450, 300, font2);
 
     //----------------------  Images buttons
     ButtonP btnP1;
-    //btnP1.setFont(font1);
-    ButtonP btnP2("Button", 750, 225, "resources/images/button1.png", font1);
+    ButtonP btnP2("Button", 750, 225, "resources/images/bar2.png", font1);
     //-- Button
+    //btnP2.isShadow = true;
     //btnP2.setHoverColor(YELLOW);
     //btnP2.setPressedColor(GREEN);
     //btnP2.setBtnPosition(btnP2.rect.x + 15, btnP2.rect.y + 15);
@@ -325,9 +326,9 @@ int main()
     //btnP2.setTextNoResize("up");
     //btnP2.setTextPosition(btnP2.rect.x + 15, btnP2.rect.y + 15);
     //btnP2.setFontSize(24);
-    //btnP2.setFontSizeNoResize(34);
+    //btnP2.setFontSizeNoResize(24);
     //btnP2.fontColor = BLACK;
-    //btnP2.isShadow = true;
+
     ButtonP btnP3("Button", 750, 325, "resources/images/button1.png", font2);
 
 
@@ -337,7 +338,7 @@ int main()
     //--------------------------------------------------------------------------------------
     // 
 
-    vector<string> menuTxt = { "START", "RESUME", "NEXT", "ABOUT", "EXIT" };
+    vector<string> menuTxt = { "START", "RESUME", "NEXT", "ABOUT", "EXIT"};
     vector<string> imgPaths = { "resources/images/bar1.png", "resources/images/bar2.png", "resources/images/bar3.png", "resources/images/bar4.png", "resources/images/bar5.png" };
 
     //----------------------  Menu Rectangle Bars
@@ -348,8 +349,8 @@ int main()
     //MenuR menuR2(menuTxt, CENTER);
     //MenuR menuR3(menuTxt, CENTER, TXT_RIGHT);
     //MenuR menuR4(menuTxt, CENTER, font2, 32);
-    MenuR menuR5(menuTxt, CENTER, TXT_LEFT, font1, 24);
-    menuR5.setBarsSize(300, 55);
+    MenuR menuR5(menuTxt, CENTER, TXT_LEFT, font1, 34);
+    //menuR5.setBarsSize(300, 55);
     //-- Shadow
     //menuR5.setShadow(false);
     //menuR5.setShadowsColor(GREEN);
@@ -359,7 +360,7 @@ int main()
     //menuR5.setBordersThickness(5);
     //menuR5.setBordersColorIdle({ GREEN, DARKGREEN, YELLOW, DARKBLUE, BLUE });
     //menuR5.setBordersColorPressed({ RED, RED, RED, RED, RED });
-    //menuR5.setBordersColorHover({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN } );
+    //menuR5.setBordersColorHover({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN });
     //menuR5.setBorder(false);
     //--- Bar
     //menuR5.setBarsColorIdle({ GREEN, DARKGREEN, YELLOW, DARKBLUE, BLUE });
@@ -371,7 +372,7 @@ int main()
     //menuR5.setFontSizeNoResize(24);
     //menuR5.setTextBar("----------------------Mod.Text Bar------------------", 3);
     //menuR5.setTextBar("Mod.Text Bar", 3);
-    //menuR5.setTxtPosition(TXT_LEFT);
+    //menuR5.setTxtPosition(TXT_CENTER);
     //menuR5.setFontsColor({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN });
 
     //----------------------  Menu Reounded Bars
@@ -382,7 +383,7 @@ int main()
     //MenuO menuO4(menuTxt, CENTER, font2, 32);
     MenuO menuO5(menuTxt, CENTER, TXT_CENTER, font1, 32);
     menuO5.setBarsSize(300, 55);
-
+    menuO5.setbBarsRoundness(1);
     //----------------------  Menu Image Bars
     //MenuP menuDefaultP;
     //MenuP menuP1(menuTxt, imgPaths);
@@ -398,16 +399,16 @@ int main()
     //menuP6.AddToShadowsPos(5, 5);
     //menuP6.AddToShadowsSize(5, 5);
     //--- Bar
-    //menuP6.setBarsColorPressed({ RED, RED, RED, RED, RED });
-    //menuP6.setBarsColorHover({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN } );
+    menuP6.setBarsColorPressed({ RED, RED, RED, RED, RED });
+    menuP6.setBarsColorHover({ YELLOW, BLUE, DARKBLUE, DARKGREEN, GREEN } );
     //--- Text and font
-    //menuP6.setFontSize(58);
-    //menuP6.setBarSpacing(100);
-    //menuP6.setFontSizeNoResize(34);
+    menuP6.setFontSize(58);
+    menuP6.setBarSpacing(100);
+    menuP6.setFontSizeNoResize(34);
     //menuP6.setTextBar("----------------------Mod.Text Bar------------------", 3);
     //menuP6.setTextBar("Mod.Text Bar", 3);
     //menuP6.setTxtPosition(TXT_LEFT);
-    menuP6.setFontsColor({ LIGHTGRAY, DARKGRAY, WHITE, DARKGREEN, DARKBROWN });
+    //menuP6.setFontsColor({ LIGHTGRAY, DARKGRAY, WHITE, DARKGREEN, DARKBROWN });
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -471,7 +472,7 @@ int main()
         // Update buttons
         //----------------------------------------------------------------------------------
 
-        switch (btnR1.update())
+        switch (btnP1.update())
         {
         case MOUSE_BUTTON_LEFT:
             cout << "\n---- The mouse left button was pressed, exit program ----\n";
@@ -482,7 +483,8 @@ int main()
             exit(0); // exists program
             break;
         case MOUSE_BUTTON_MIDDLE:
-            cout << "\n---- The mouse right button was pressed, exit program  ----\n";
+            cout << "\n---- The mouse middle button was pressed, exit program  ----\n";
+            exit(0); // exists program
             break;
         default:
             break;
@@ -504,7 +506,7 @@ int main()
             exit(0); // exists program
             break;
         case MOUSE_BUTTON_MIDDLE:
-            cout << "\n---- The menu bar mouse right button was pressed, exit program  ----\n";
+            cout << "\n---- The menu bar mouse middle button was pressed, exit program  ----\n";
             exit(0); // exists program
             break;
         default:
